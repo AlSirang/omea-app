@@ -1,19 +1,33 @@
+import { Container, Nav, Navbar } from "react-bootstrap";
+
+import logoIcon from "assets/logos/logo-main.svg";
 import "src/styles/header.css";
 
 export default function Header() {
   return (
-    <header className="header-main">
-      <h1>Omea</h1>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="/">
+          <img src={logoIcon} height="50" alt="omea logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-      <ul className="">
-        <li>Whitepaper</li>
-        <li>About Us</li>
-        <li>Audit</li>
-        <li>Contract</li>
-        <li>
-          <button className="">Enter</button>
-        </li>
-      </ul>
-    </header>
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-end"
+        >
+          <Nav className="gap-3">
+            <Nav.Link href="#deets">Whitepaper</Nav.Link>
+            <Nav.Link href="#deets">About Us</Nav.Link>
+            <Nav.Link href="#deets">Audit</Nav.Link>
+            <Nav.Link href="#deets">Contract</Nav.Link>
+
+            <button className="btn btn-primary">
+              <strong>Enter App</strong>
+            </button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
