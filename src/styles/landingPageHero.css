@@ -1,11 +1,6 @@
-html {
-  /* font-size: 10px; */
-}
-
 .container-hero {
   margin-top: 15rem;
   padding: 0;
-  padding-bottom: 250px;
 }
 .grid {
   display: flex;
