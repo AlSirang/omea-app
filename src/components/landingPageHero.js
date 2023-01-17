@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import busdIconOne from "assets/Icons/busdIcon.png";
 import busdIconFlip from "assets/Icons/busdIconTilted.png";
 import lineIcon from "assets/Icons/line.svg";
@@ -6,7 +6,7 @@ import "src/styles/landingPageHero.css";
 
 export default function LandingPageHero() {
   return (
-    <Container className="container-hero">
+    <Container className="container-hero section-padding">
       <div className="grid">
         <div className="grid-col">
           <div data-aos="fade-up" data-aos-delay="500">
