@@ -61,3 +61,28 @@ div.card-main {
     inset 0px 0px 83px 6px rgba(255, 255, 255, 0.13);
   border-radius: 34px;
 }
+
+.section-padding {
+  padding-bottom: 250px;
+}
+
+.section-padding-2 {
+  padding-bottom: 180px;
+}
+
+/* landing page */
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.section-sub-title {
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.5;
+}
