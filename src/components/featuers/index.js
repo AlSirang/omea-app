@@ -6,10 +6,10 @@ import "src/styles/featuersSection.css";
 
 export default function Features() {
   return (
-    <Container>
+    <Container className="section-padding-2">
       <div className="text-center">
-        <h2 className="f-title">OMEA's advanced features</h2>
-        <h3 className="f-sub-title">
+        <h2 className="section-title">OMEA's advanced features</h2>
+        <h3 className="section-sub-title">
           Optimizing performance through AI and diversification to maximize
           returns and minimize risks.
         </h3>
@@ -22,7 +22,11 @@ export default function Features() {
         ))}
       </div>
 
-      <div className="text-center btn-container">
+      <div
+        className="text-center btn-container"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
         <button className="btn btn-lg btn-primary">
           <span className="start-earning">Start Earning</span>
         </button>
