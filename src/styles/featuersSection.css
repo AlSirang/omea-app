@@ -1,18 +1,6 @@
-.f-title {
-  font-size: 3.5rem;
-  font-weight: 600;
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--primary-color);
-}
-
-.f-sub-title {
-  font-size: 1.4rem;
-  max-width: 800px;
-  margin: auto;
-}
-
 .f-card {
+  width: 100%;
+  height: 100%;
   padding: 50px 20px;
   text-align: center;
 }
