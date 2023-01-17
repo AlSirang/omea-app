@@ -1,12 +1,9 @@
-import Header from "components/header";
-
-import LandingPageHero from "components/landingPageHero";
+import Home from "pages/home";
 
 function App() {
   return (
     <>
-      <Header />
-      <LandingPageHero />
+      <Home />
     </>
   );
 }
