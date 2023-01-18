@@ -1,0 +1,57 @@
+export const sections = [
+  {
+    id: "0x1",
+    title: "Q1 2023",
+    stage: "on track",
+    description: [
+      "Concept development",
+      "Whitepaper development",
+      " Alpha Testing on testnets",
+      "Beta public launch to mainnet",
+      "Reach a TVL of 100k BUSD",
+      "Reach a Community of 2k ",
+      "Founding Team DOXXING",
+    ],
+    className: "started",
+  },
+  {
+    id: "0x2",
+    title: "Q2 2023",
+    stage: "not started",
+    description: [
+      "Partnerships and integration improved algorithm",
+      "Beta-release of the OMEA-bot",
+      "NFT Token launch (OMEA-Access)",
+      "Reach a TVL of 2M BUSD",
+      "Reach a Community of 10k",
+      "Meet and Greet (Location TBD)",
+    ],
+    className: "",
+  },
+  {
+    id: "0x3",
+    title: "Q3 2023",
+    stage: "not started",
+    description: [
+      "Partnerships ",
+      "Launch of mobile app",
+      "Launch of OMEA-Token",
+      "NFT Token launch (OMEA-Access)",
+      "Reach a TVL of 10M BUSD",
+      "Reach a Community of 500k",
+    ],
+    className: "",
+  },
+  {
+    id: "0x4",
+    title: "Q4 2023",
+    stage: "not started",
+    description: [
+      "Sponsoring Partnerships",
+      "Launch of OMEA-Launchpad",
+      "Reach a TVL of 40M BUSD",
+      "Reach a Community of 1M and more...",
+    ],
+    className: "",
+  },
+];
