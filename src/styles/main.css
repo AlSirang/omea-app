@@ -3,6 +3,7 @@
 
   --primary-color: #ffd700;
   --primary-rgb: rgb(255 215 0);
+  --primary-dark: var(--bs-dark-rgb);
 }
 
 body {
@@ -85,4 +86,15 @@ div.card-main {
   max-width: 800px;
   margin: auto;
   line-height: 1.5;
+}
+
+.card-outer {
+  width: 100%;
+  height: 100%;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.custom-scrollbar-cards::-webkit-scrollbar {
+  height: 3px;
 }

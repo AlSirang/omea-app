@@ -1,6 +1,6 @@
 export default function FeaturesCard({ icon, title, description }) {
   return (
-    <div className="card-main f-card">
+    <div className="card-main f-card card-outer">
       <div className="f-card-icon">
         <img className="icon" src={icon} alt={title} />
       </div>

@@ -15,7 +15,7 @@ export default function Team() {
         </h3>
       </div>
 
-      <div className="t-cards-grid">
+      <div className="t-cards-grid custom-scrollbar-cards">
         {members.map((member, index) => (
           <div
             className="t-container"
