@@ -2,16 +2,16 @@ import LandingPageHero from "components/landingPageHero";
 import FeaturesSection from "components/featuers";
 import Team from "components/team";
 import RoadMap from "components/roadMap";
-import LandingPageLayout from "src/layouts/landingPage.layout";
+import PageLayout from "src/layouts/pageLayout";
 
 export default function Home() {
   return (
-    <LandingPageLayout>
+    <PageLayout>
       <LandingPageHero />
       <FeaturesSection />
 
       <RoadMap />
       <Team />
-    </LandingPageLayout>
+    </PageLayout>
   );
 }
