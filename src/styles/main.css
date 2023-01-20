@@ -101,7 +101,7 @@ div.card-main {
 
 .section-sub-title {
   font-size: 1.4rem;
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   line-height: 1.5;
 }
@@ -115,4 +115,8 @@ div.card-main {
 
 .custom-scrollbar-cards::-webkit-scrollbar {
   height: 3px;
+}
+
+.sub-section-m-t {
+  margin-top: 70px;
 }

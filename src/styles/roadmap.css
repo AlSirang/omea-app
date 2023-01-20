@@ -11,7 +11,6 @@ div.roadmap-card {
 .roadmap-cards-grid {
   display: flex;
   gap: 25px;
-  margin-top: 70px;
   overflow-x: scroll;
   overflow-y: hidden;
   padding: 50px 0;

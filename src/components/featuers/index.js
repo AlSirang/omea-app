@@ -14,7 +14,7 @@ export default function Features() {
           returns and minimize risks.
         </h3>
       </div>
-      <div className="cards-grid">
+      <div className="cards-grid sub-section-m-t">
         {features.map((props, index) => (
           <span data-aos="fade-up" data-aos-delay={index * 100} key={props.id}>
             <FeaturesCard {...props} />

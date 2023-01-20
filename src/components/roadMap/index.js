@@ -13,7 +13,7 @@ export default function RoadMap() {
         </h3>
       </div>
 
-      <div className="roadmap-cards-grid custom-scrollbar-cards">
+      <div className="roadmap-cards-grid custom-scrollbar-cards sub-section-m-t">
         {sections.map((section, index) => (
           <div
             className="r-card-container"
