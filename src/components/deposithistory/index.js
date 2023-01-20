@@ -1,5 +1,5 @@
 import React from "react";
-
+import "src/styles/dapp.css";
 export default function DepositHistory() {
   return (
     <div className="main-deposit-history">

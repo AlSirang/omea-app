@@ -1,6 +1,7 @@
 import Bonusvouchers from "components/bonusVouchers";
 import DepositHistory from "components/deposithistory";
 import InvestSection from "components/invest";
+import LiveTradeTable from "components/liveTradeTable";
 import Overview from "components/overview";
 import Referral from "components/referral";
 import { Container } from "react-bootstrap";
@@ -20,6 +21,8 @@ export default function Dapp() {
           <Bonusvouchers />
           <Referral />
         </div>
+
+        <LiveTradeTable />
       </Container>
     </PageLayout>
   );

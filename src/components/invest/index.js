@@ -1,5 +1,6 @@
 import React from "react";
 import icon from "assets/Icons/busdIcon.png";
+import "src/styles/dapp.css";
 export default function InvestSection() {
   return (
     <div className="container-invest-main">
