@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
 import stepOneIcon from "assets/images/hitw_1.png";
 import stepTwoIcon from "assets/images/hitw_2.png";
 import stepThreeIcon from "assets/images/hitw_3.png";
 import "src/styles/howtToStart.css";
-import { useRef, useState } from "react";
 
 const steps = [
   {
