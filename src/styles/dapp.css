@@ -206,6 +206,7 @@
   height: 5px;
   margin: 5px 50px;
 }
+
 @media (max-width: 991.98px) {
   .button-section {
     margin-left: 20px;
