@@ -76,13 +76,17 @@ div.accordion-item {
 
 /* // Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
-  .accordion-container {
-    margin-top: 0;
-    margin-bottom: 50px;
-  }
 }
 /* // Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
+  .hts-img-container {
+    max-width: 100%;
+  }
+  .image {
+    max-width: 300px;
+    max-height: 350px;
+    width: auto;
+  }
 }
 
 /* // Small devices (landscape phones, less than 768px) */
