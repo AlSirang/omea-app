@@ -160,6 +160,9 @@
   margin-top: 50px;
   padding-bottom: 50px !important;
 }
+.main-Referral h4 {
+  text-transform: capitalize;
+}
 .referral-container {
   padding: 10px 20px;
 }
