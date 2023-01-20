@@ -1,0 +1,258 @@
+/* container-section-two */
+.container-section-two {
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 1.8fr 1fr;
+}
+/* container-section-three */
+.container-section-three {
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 1fr 1.8fr;
+}
+.overview-grid-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* invest */
+
+.container-invest-main {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.container-invest-main h4 {
+  text-transform: capitalize;
+}
+.busdicon-Section {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.busdicon-Section p {
+  padding-top: 15px;
+  text-transform: uppercase;
+}
+.image-busdicon {
+  width: 60px;
+  height: 60px;
+}
+.section-one {
+  display: flex;
+  padding: 10px 40px;
+  justify-content: space-between;
+}
+
+.input-stake {
+  background: transparent;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+.input-stake:hover {
+  outline: none;
+}
+
+.button-section {
+  margin-left: 70px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  border: 1px solid #ffd700;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.invest-grid-section {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.button-sec-Claim-reward {
+  padding: 40px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-Claim-reward {
+  width: 200px;
+}
+
+/*deposit-history */
+
+.main-deposit-history {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: column;
+}
+.main-deposit-history h4 {
+  text-transform: capitalize;
+}
+.data-deposit-section {
+  display: flex;
+  gap: 10px;
+}
+.budget-deposit-section {
+  display: flex;
+  gap: 10px;
+}
+.budget-deposit-section p {
+  text-transform: uppercase;
+}
+
+.date-mont-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.section-date-hour {
+  display: flex;
+  gap: 30px;
+}
+.card-data-first-Section {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.btn-withdraw {
+  width: 120px;
+  border-radius: 50px !important;
+}
+
+.section-section-date-withraw {
+  padding: 20px 15px;
+  display: flex;
+
+  justify-content: space-between;
+}
+.section-section-date-withraw-vouchar {
+  padding: 5px 15px;
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.hr-deposit-section {
+  color: #6c6a6a;
+  height: 5px;
+  margin: 30px 50px;
+}
+.text-Section {
+  height: 230px;
+}
+.text-Section-vouchar {
+  height: 100px;
+}
+/* main-Referral */
+
+.main-Referral {
+  margin-top: 50px;
+  padding-bottom: 50px !important;
+}
+.referral-container {
+  padding: 10px 20px;
+}
+.progress-bar-div {
+  padding: 10px;
+}
+
+.progress-bar-div h4 {
+  text-transform: capitalize;
+}
+.progress-bar {
+  padding: 10px 0px;
+  font-size: 20px;
+
+  color: #000000;
+  background-color: #585252 !important;
+}
+.section-data-referral {
+  display: flex;
+  margin-top: 88px;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-between;
+}
+.data-section-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.inner-data-section {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.btn-copylink {
+  font-weight: bold;
+}
+
+.hr-deposit-section-vochar {
+  color: #6c6a6a;
+  height: 5px;
+  margin: 5px 50px;
+}
+@media (max-width: 991.98px) {
+  .button-section {
+    margin-left: 20px;
+    max-width: 300px;
+  }
+  .section-date-hour {
+    display: flex;
+    gap: 45px;
+  }
+  .btn-withdraw {
+    width: 100px;
+  }
+  .section-section-date-withraw {
+    gap: 30px;
+  }
+}
+.section-date-hour-var {
+  display: flex;
+  gap: 30px;
+}
+
+@media (max-width: 767.98px) {
+  .overview-grid-section {
+    padding: 15px 20px;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+  }
+  .button-section {
+    margin-left: 10px;
+    max-width: 300px;
+  }
+
+  .invest-grid-section {
+    padding: 20px;
+    row-gap: 20px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .container-section-two {
+    grid-template-columns: 1fr;
+  }
+  .container-section-three {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .section-data-referral {
+    margin-top: 40px;
+    row-gap: 20px;
+    justify-content: center;
+  }
+}
