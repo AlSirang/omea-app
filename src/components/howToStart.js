@@ -47,10 +47,10 @@ export default function HowToStart() {
       </div>
 
       <Row
-        className="sub-section-m-t flex-md-column-reverse flex-lg-row"
+        className="sub-section-m-t flex-column-reverse flex-lg-row"
         data-aos="fade-up"
       >
-        <Col className="col-md-12 col-lg-6">
+        <Col className="col-md-12 col-lg-6 mt-5 mt-lg-0">
           <div className="card-main hts-img-container">
             {activeKey === "0" && (
               <img
