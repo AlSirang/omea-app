@@ -3,6 +3,7 @@ import FeaturesCard from "./featuresCard";
 import { features } from "./constants";
 
 import "src/styles/featuersSection.css";
+import { StartEarning } from "components/button";
 
 export default function Features() {
   return (
@@ -27,9 +28,7 @@ export default function Features() {
         data-aos="fade-up"
         data-aos-delay="100"
       >
-        <button className="btn btn-lg btn-primary">
-          <span className="start-earning">Start Earning</span>
-        </button>
+        <StartEarning />
       </div>
     </Container>
   );

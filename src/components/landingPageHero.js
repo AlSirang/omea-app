@@ -3,6 +3,7 @@ import busdIconOne from "assets/Icons/busdIcon.png";
 import busdIconFlip from "assets/Icons/busdIconTilted.png";
 import lineIcon from "assets/Icons/line.svg";
 import "src/styles/landingPageHero.css";
+import { StartEarning } from "./button";
 
 export default function LandingPageHero() {
   return (
@@ -19,9 +20,7 @@ export default function LandingPageHero() {
               Join our community and start earning with OMEA today.
             </p>
 
-            <button className="btn btn-primary">
-              <span className="start-earning">Start Earning</span>
-            </button>
+            <StartEarning />
           </div>
         </div>
 
