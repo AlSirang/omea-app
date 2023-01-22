@@ -51,7 +51,7 @@ export default function HowToStart() {
         data-aos="fade-up"
       >
         <Col className="col-md-12 col-lg-6 mt-5 mt-lg-0">
-          <div className="card-main hts-img-container">
+          <div className="card-main is-small-card hts-img-container">
             {activeKey === "0" && (
               <img
                 src={stepOneIcon}

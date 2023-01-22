@@ -55,3 +55,11 @@ div.roadmap-card {
     width: 100%;
   }
 }
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  div.roadmap-card {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+}

@@ -6,7 +6,7 @@ import "src/styles/footer.css";
 
 export default function Footer() {
   return (
-    <footer className="py-5 mt-5 ">
+    <footer className="py-5 mt-5">
       <Container>
         <h5 className="text-center ">
           OMEA © Copyright {new Date().getFullYear()}. All rights reserved

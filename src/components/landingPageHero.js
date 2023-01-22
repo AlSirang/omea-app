@@ -30,7 +30,7 @@ export default function LandingPageHero() {
           <div
             className="card-container card-main"
             data-aos="fade-up"
-            data-aos-delay="600"
+            data-aos-delay="200"
           >
             <img
               className="busd-icon-top card-icon busd-icon"

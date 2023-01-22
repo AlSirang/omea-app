@@ -120,3 +120,38 @@ div.card-main {
 .sub-section-m-t {
   margin-top: 70px;
 }
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .section-padding {
+    padding-bottom: 210px;
+  }
+
+  .section-padding-2 {
+    padding-bottom: 150px;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .section-sub-title {
+    font-size: 1.2rem;
+  }
+  .is-small-card {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .p {
+    font-size: 1.15rem;
+  }
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .section-sub-title {
+    font-size: 1.1rem;
+  }
+}
