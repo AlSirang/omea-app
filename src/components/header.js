@@ -2,8 +2,14 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 
 import logoIcon from "assets/logos/logo-main.svg";
 import "src/styles/header.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigation = useNavigate();
+
+  const onEnterApp = () => {
+    navigation("/dapp");
+  };
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -22,7 +28,7 @@ export default function Header() {
             <Nav.Link href="#deets">Audit</Nav.Link>
             <Nav.Link href="#deets">Contract</Nav.Link>
 
-            <button className="btn btn-primary">
+            <button onClick={onEnterApp} className="btn btn-primary">
               <strong>Enter App</strong>
             </button>
           </Nav>
