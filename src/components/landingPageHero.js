@@ -20,7 +20,9 @@ export default function LandingPageHero() {
               Join our community and start earning with OMEA today.
             </p>
 
-            <StartEarning />
+            <div className="button-container">
+              <StartEarning />
+            </div>
           </div>
         </div>
 
