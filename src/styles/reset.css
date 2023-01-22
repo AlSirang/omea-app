@@ -1,3 +1,13 @@
+@font-face {
+  font-family: THICCCBOI;
+  src: url("assets/fonts/THICCCBOI-Regular.ttf");
+}
+@font-face {
+  font-family: THICCCBOI;
+  src: url("assets/fonts/THICCCBOI-Bold.ttf");
+  font-weight: bold;
+}
+
 * {
   margin: 0;
   padding: 0;
