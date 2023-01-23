@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import PageLayout from "src/layouts/pageLayout";
 import Bonusvouchers from "components/bonusVouchers";
-import DepositHistory from "components/deposithistory";
+import DepositHistory from "components/depositHistory";
 import InvestSection from "components/invest";
 import LiveTradeTable from "components/liveTradeTable";
 import Overview from "components/overview";
@@ -12,9 +12,8 @@ export default function Dapp() {
   return (
     <PageLayout>
       <Overview />
-      <Container className="container-section-two">
+      <Container className="investment-section">
         <InvestSection />
-
         <DepositHistory />
       </Container>
 
