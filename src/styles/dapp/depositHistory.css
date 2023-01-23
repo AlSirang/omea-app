@@ -1,0 +1,58 @@
+.deposit-card {
+  padding: 40px 35px;
+  height: 100%;
+}
+
+.deposit-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.deposit-card-head p {
+  margin-bottom: 0;
+}
+
+.deposit-date,
+.deposit-amount {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.withraw-section {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.withdraw-duration {
+  display: flex;
+  gap: 15px;
+}
+
+.withdraw-duration h6 {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.withdraw-duration p {
+  margin-bottom: 0;
+}
+
+.deposit-hr {
+  margin: 20px auto;
+  color: #6c6a6a;
+}
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+}
+@media (max-width: 991.98px) {
+}
+
+@media (max-width: 767.98px) {
+  .deposit-card {
+    padding: 40px 15px;
+  }
+}

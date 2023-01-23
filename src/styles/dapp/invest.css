@@ -1,5 +1,6 @@
 .invest-card {
   padding: 40px 35px;
+  height: 100%;
 }
 
 .invest-head {
@@ -101,10 +102,6 @@ p.invest-para {
   margin: 0;
 }
 
-/* // X-Large devices (large desktops, less than 1400px) */
-@media (max-width: 1399.98px) {
-}
-
 /* // Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
   .invest-input {
@@ -137,5 +134,9 @@ p.invest-para {
     display: grid;
     gap: 30px;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .invest-input {
+    --button-width: 80px;
   }
 }
