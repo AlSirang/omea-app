@@ -1,11 +1,5 @@
 /* common */
 
-/* container-section-two */
-.container-section-two {
-  display: grid;
-  column-gap: 30px;
-  grid-template-columns: 1.8fr 1fr;
-}
 /* container-section-three */
 .container-section-three {
   display: grid;
@@ -20,19 +14,6 @@
   gap: 5px;
   align-items: center;
 }
-.busdicon-Section p {
-  padding-top: 15px;
-  text-transform: uppercase;
-}
-.image-busdicon {
-  width: 60px;
-  height: 60px;
-}
-.section-one {
-  display: flex;
-  padding: 10px 40px;
-  justify-content: space-between;
-}
 
 .input-stake {
   background: transparent;
@@ -43,35 +24,6 @@
 }
 .input-stake:hover {
   outline: none;
-}
-
-.button-section {
-  margin-left: 70px;
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  border: 1px solid #ffd700;
-  max-width: 500px;
-  border-radius: 8px;
-}
-
-.invest-grid-section {
-  margin-top: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 30px;
-}
-
-.button-sec-Claim-reward {
-  padding: 40px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-Claim-reward {
-  width: 200px;
 }
 
 /*deposit-history */
@@ -194,10 +146,6 @@
 }
 
 @media (max-width: 991.98px) {
-  .button-section {
-    margin-left: 20px;
-    max-width: 300px;
-  }
   .section-date-hour {
     display: flex;
     gap: 45px;
@@ -215,18 +163,6 @@
 }
 
 @media (max-width: 767.98px) {
-  .button-section {
-    margin-left: 10px;
-    max-width: 300px;
-  }
-
-  .invest-grid-section {
-    padding: 20px;
-    row-gap: 20px;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: 1fr 1fr;
-  }
   .container-section-two {
     grid-template-columns: 1fr;
   }

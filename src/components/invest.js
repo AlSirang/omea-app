@@ -7,50 +7,56 @@ export default function InvestSection() {
     <div className="invest-main">
       <h4 className="heading">Invest</h4>
       <div className="card-main invest-card">
-        <div className="section-one">
-          <div className="busdicon-Section">
-            <img className="image-busdicon" src={icon} alt="img" />
-            <p>BUSD</p>
+        <div className="invest-head">
+          <div className="invest-busd-icon">
+            <img className="icon" src={icon} alt="busd icon" />
+            <p className="invest-para">BUSD</p>
           </div>
-          <div>
+          <div className="invest-info">
             <div>
-              <h5>Balance</h5>
-              <p>100.2340,00</p>
+              <h5 className="invest-title">Balance</h5>
+              <p className="invest-para">100.2340,00</p>
             </div>
             <div>
-              <h5>Balance</h5>
-              <p>100.2340,00</p>
+              <h5 className="invest-title">Staked</h5>
+              <p className="invest-para">100.2340,00</p>
             </div>
           </div>
         </div>
         {/* section button*/}
 
-        <div className="button-section">
-          <input className="input-stake"></input>
-          <button className="btn btn-primary btn-stake"> Stake</button>
+        <div className="invest-input">
+          <input className="input-stake" />
+
+          <div className="invest-button">
+            <button className="btn btn-lg btn-primary">
+              <strong>Stake</strong>
+            </button>
+          </div>
         </div>
         {/* grid */}
-        <div className=" invest-grid-section">
-          <div>
-            <h5>Claimable reward</h5>
-            <p>100.2340,00</p>
+        <div className="invest-grid-section mt-5">
+          <div className="invest-gird-inner">
+            <h5 className="invest-title">Claimable reward</h5>
+            <p className="invest-para">100.2340,00</p>
           </div>
-          <div>
-            <h5>Total reward</h5>
-            <p>100.2340,00</p>
+          <div className="invest-gird-inner">
+            <h5 className="invest-title">Total reward</h5>
+            <p className="invest-para">100.2340,00</p>
           </div>
-          <div>
-            <h5>BUSD per Day</h5>
-            <p>100.2340,00</p>
+          <div className="invest-gird-inner">
+            <h5 className="invest-title">BUSD per Day</h5>
+            <p className="invest-para">100.2340,00</p>
           </div>
-          <div>
-            <h5>BUSD per Hour</h5>
-            <p>100.2340,00</p>
+          <div className="invest-gird-inner">
+            <h5 className="invest-title">BUSD per Hour</h5>
+            <p className="invest-para">100.2340,00</p>
           </div>
         </div>
-        <div className=" button-sec-Claim-reward">
-          <button className="btn btn-primary btn-Claim-reward">
-            Claim reward
+
+        <div className="text-center mt-5">
+          <button className="btn btn-lg btn-primary">
+            <strong>Claim reward</strong>
           </button>
         </div>
       </div>
