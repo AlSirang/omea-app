@@ -1,5 +1,6 @@
 import React from "react";
-import "src/styles/dapp.css";
+import "src/styles/dapp/bonusvouchers.css";
+
 export default function Bonusvouchers() {
   return (
     <div className="main-deposit-history">
