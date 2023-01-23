@@ -1,41 +1,5 @@
 /* common */
 
-.heading {
-  font-size: 1.9rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  --displacement: 15px;
-  margin-left: var(--displacement);
-  width: (100% - var(--displacement));
-}
-
-/* Overview Section */
-
-div.overview-container {
-  margin-top: 100px;
-  --bs-gutter-x: 0;
-}
-
-.overview-section {
-  padding: 30px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  flex-wrap: wrap;
-}
-
-.overview-item h5 {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.overview-item p {
-  margin-bottom: 0;
-  font-size: 1.12rem;
-  font-weight: bold;
-}
-
 /* container-section-two */
 .container-section-two {
   display: grid;
@@ -51,14 +15,6 @@ div.overview-container {
 
 /* invest */
 
-.container-invest-main {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-}
-.container-invest-main h4 {
-  text-transform: capitalize;
-}
 .busdicon-Section {
   display: flex;
   gap: 5px;
@@ -259,11 +215,6 @@ div.overview-container {
 }
 
 @media (max-width: 767.98px) {
-  .overview-section {
-    padding: 30px 20px;
-    justify-content: center;
-    gap: 30px;
-  }
   .button-section {
     margin-left: 10px;
     max-width: 300px;

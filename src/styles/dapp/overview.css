@@ -1,0 +1,32 @@
+div.overview-container {
+  margin-top: 100px;
+  --bs-gutter-x: 0;
+}
+
+.overview-section {
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.overview-item h5 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.overview-item p {
+  margin-bottom: 0;
+  font-size: 1.12rem;
+  font-weight: bold;
+}
+
+@media (max-width: 767.98px) {
+  .overview-section {
+    padding: 30px 20px;
+    justify-content: center;
+    gap: 30px;
+  }
+}

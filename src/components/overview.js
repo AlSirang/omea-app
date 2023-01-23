@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import "src/styles/dapp.css";
+import "src/styles/dapp/overview.css";
 
 export default function Overview() {
   return (
