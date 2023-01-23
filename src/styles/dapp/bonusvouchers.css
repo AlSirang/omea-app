@@ -1,0 +1,7 @@
+@import url("depositHistory.css");
+
+.claim-button {
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 100px;
+}

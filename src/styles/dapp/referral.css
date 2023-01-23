@@ -1,0 +1,71 @@
+.progressBar-container {
+  padding: 10px;
+}
+.progressBar-container h4 {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+div.progress-bar {
+  padding: 15px 0px;
+  font-size: 1.25rem;
+  color: #000000;
+  background-color: #585252;
+  font-weight: bold;
+}
+
+.referral-card {
+  padding: 20px 35px;
+  height: 100%;
+}
+
+.referral-info {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  --button-width: 200px;
+}
+
+.referral-info-inner {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - var(--button-width));
+}
+
+.referral-info-inner > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.referral-info-inner > div h6 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.referral-info-inner > div p {
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+@media (max-width: 991.98px) {
+  .referral-info {
+    flex-wrap: wrap;
+  }
+
+  .referral-info-inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .referral-info .refferal-button {
+    width: 95%;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 767.98px) {
+}
