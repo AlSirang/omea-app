@@ -7,10 +7,13 @@
   width: (100% - var(--displacement));
 }
 
-.container-section-two {
+.investment-section {
   display: grid;
-  column-gap: 30px;
+  gap: 30px;
   grid-template-columns: 1fr 0.5fr;
+  grid-template-rows: 1fr;
+  margin-top: 50px;
+  margin-bottom: 60px;
 }
 
 .container-section-three {
@@ -18,10 +21,16 @@
   column-gap: 30px;
   grid-template-columns: 1fr 1.8fr;
 }
+
+button.btn-withdraw {
+  border-radius: 50px;
+}
+
 /* // Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
-  .container-section-two {
+  .investment-section {
     grid-template-columns: 1fr;
+    gap: 90px;
   }
 }
 
