@@ -1,7 +1,7 @@
 .heading {
-  font-size: 1.9rem;
+  font-size: 1.65rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   --displacement: 20px;
   margin-left: var(--displacement);
   width: (100% - var(--displacement));
@@ -11,15 +11,15 @@
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr 0.5fr;
-  grid-template-rows: 1fr;
   margin-top: 50px;
   margin-bottom: 60px;
 }
 
-.container-section-three {
+.referral-section {
   display: grid;
-  column-gap: 30px;
+  gap: 30px;
   grid-template-columns: 1fr 1.8fr;
+  margin-top: 100px;
 }
 
 button.btn-withdraw {
@@ -31,6 +31,10 @@ button.btn-withdraw {
   .investment-section {
     grid-template-columns: 1fr;
     gap: 90px;
+  }
+  .referral-section {
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
 
