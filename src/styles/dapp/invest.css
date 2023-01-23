@@ -65,6 +65,13 @@ p.invest-para {
   border-radius: 8px 0px 0px 8px;
   width: calc(100% - var(--button-width));
   padding: 12px 10px;
+  background: transparent;
+  color: #fff;
+  outline: none;
+}
+
+.invest-input input:hover {
+  outline: none;
 }
 .invest-button {
   position: absolute;

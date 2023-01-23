@@ -10,9 +10,14 @@
 .container-section-two {
   display: grid;
   column-gap: 30px;
-  grid-template-columns: 1.8fr 1fr;
+  grid-template-columns: 1fr 0.5fr;
 }
 
+.container-section-three {
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 1fr 1.8fr;
+}
 /* // Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
   .container-section-two {

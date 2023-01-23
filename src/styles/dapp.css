@@ -1,37 +1,6 @@
-/* common */
-
-/* container-section-three */
-.container-section-three {
-  display: grid;
-  column-gap: 30px;
-  grid-template-columns: 1fr 1.8fr;
-}
-
-/* invest */
-
-.busdicon-Section {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.input-stake {
-  background: transparent;
-  color: #fff;
-  padding: 5px;
-  border: none;
-  outline: none;
-}
-.input-stake:hover {
-  outline: none;
-}
-
 /*deposit-history */
 
 .main-deposit-history {
-  display: flex;
-  margin-top: 50px;
-  flex-direction: column;
 }
 .main-deposit-history h4 {
   text-transform: capitalize;
