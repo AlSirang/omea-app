@@ -1,6 +1,7 @@
-import Progress from "components/progressbar";
 import React from "react";
+import Progress from "components/progressBar";
 import "src/styles/dapp.css";
+
 export default function Referral() {
   return (
     <div className="main-Referral">
