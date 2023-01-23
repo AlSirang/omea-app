@@ -1,7 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-
 import logoIcon from "assets/logos/logo-main.svg";
-import "src/styles/header.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
