@@ -2,7 +2,7 @@ import Table from "react-bootstrap/Table";
 import "src/styles/livetrade.css";
 function LiveTradeTable() {
   return (
-    <div className="main-container">
+    <div className="main-container d-sm-none">
       <h4>Live trades</h4>
       <div className="card-main card-main-inner">
         <Table responsive="sm" className="table-main">
