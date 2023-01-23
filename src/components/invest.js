@@ -4,7 +4,7 @@ import "src/styles/dapp/invest.css";
 
 export default function InvestSection() {
   return (
-    <div className="invest-main">
+    <div>
       <h4 className="heading">Invest</h4>
       <div className="card-main invest-card">
         <div className="invest-head">
