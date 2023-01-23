@@ -1,11 +1,12 @@
 import React from "react";
 import icon from "assets/Icons/busdIcon.png";
-import "src/styles/dapp.css";
+import "src/styles/dapp/invest.css";
+
 export default function InvestSection() {
   return (
-    <div className="container-invest-main">
-      <h4>invest</h4>
-      <div className="card-main">
+    <div className="invest-main">
+      <h4 className="heading">Invest</h4>
+      <div className="card-main invest-card">
         <div className="section-one">
           <div className="busdicon-Section">
             <img className="image-busdicon" src={icon} alt="img" />
@@ -49,7 +50,6 @@ export default function InvestSection() {
         </div>
         <div className=" button-sec-Claim-reward">
           <button className="btn btn-primary btn-Claim-reward">
-            {" "}
             Claim reward
           </button>
         </div>
