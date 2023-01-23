@@ -1,0 +1,12 @@
+.invest-main {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.invest-main h4 {
+  text-transform: capitalize;
+}
+
+.invest-card {
+  padding: 30px 20px;
+}

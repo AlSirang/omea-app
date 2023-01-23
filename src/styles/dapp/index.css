@@ -1,0 +1,8 @@
+.heading {
+  font-size: 1.9rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  --displacement: 15px;
+  margin-left: var(--displacement);
+  width: (100% - var(--displacement));
+}
