@@ -1,14 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { DappButton, LandingPageButton } from "./units";
 import logoIcon from "assets/logos/logo-main.svg";
 import logoGoldIcon from "assets/logos/logo-gold.svg";
+import "src/styles/header.css";
 
-export default function Header() {
-  const navigation = useNavigate();
-
-  const onEnterApp = () => {
-    navigation("/dapp");
-  };
+export default function Header({ isDappPage }) {
   return (
     <Navbar
       collapseOnSelect
@@ -39,14 +35,23 @@ export default function Header() {
           className="justify-content-end"
         >
           <Nav className="gap-3">
-            <Nav.Link href="#deets">Whitepaper</Nav.Link>
-            <Nav.Link href="#deets">About Us</Nav.Link>
-            <Nav.Link href="#deets">Audit</Nav.Link>
-            <Nav.Link href="#deets">Contract</Nav.Link>
+            <Nav.Link className="header-link" href="#deets">
+              Whitepaper
+            </Nav.Link>
+            <Nav.Link className="header-link" href="#deets">
+              About Us
+            </Nav.Link>
+            <Nav.Link className="header-link" href="#deets">
+              Audit
+            </Nav.Link>
+            <Nav.Link className="header-link" href="#deets">
+              Contract
+            </Nav.Link>
 
-            <button onClick={onEnterApp} className="btn btn-primary">
-              <strong>Enter App</strong>
-            </button>
+            <Nav.Item>
+              {isDappPage && <DappButton />}
+              {!isDappPage && <LandingPageButton />}
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>

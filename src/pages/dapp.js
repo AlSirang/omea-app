@@ -10,7 +10,7 @@ import "src/styles/dapp/index.css";
 
 export default function Dapp() {
   return (
-    <PageLayout>
+    <PageLayout isDappPage>
       <Overview />
       <Container className="investment-section">
         <InvestSection />
