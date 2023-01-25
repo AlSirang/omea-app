@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import Progress from "components/progressBar";
 import { WalletUserContext } from "src/context";
-import { loadInvestorInfo } from "src/utils/web3.helpers";
+import { getInvestorInfo } from "src/utils/web3.helpers";
 import "src/styles/dapp/referral.css";
 
 const initialState = {
@@ -29,7 +29,7 @@ export default function Referral() {
     try {
       dispatch({ isDataLoading: true });
 
-      const results = await loadInvestorInfo(account);
+      const results = await getInvestorInfo(account);
       dispatch({ ...results });
     } catch (err) {}
 
