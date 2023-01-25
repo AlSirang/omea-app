@@ -1,14 +1,15 @@
 import React, { useEffect, useReducer } from "react";
 import { Container } from "react-bootstrap";
 import { Multicall } from "ethereum-multicall";
-import { getRpcProvider } from "assets/utils/constants";
+import { getRpcProvider } from "src/utils/constants";
 import { WalletUserContext } from "src/context";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "src/contract/constants";
-import { parseMulticallResponse } from "./utils";
+import { parseOverviewMulticallResponse } from "src/utils/helpers";
 import "src/styles/dapp/overview.css";
 
 const initialState = {
   isDataLoading: false,
+  totalValueLocked: 0,
   withdrawn: 0,
   investors: 0,
   roi: 0,
@@ -20,8 +21,10 @@ export default function Overview() {
     contextState: { account },
   } = WalletUserContext();
 
-  const [{ isDataLoading, withdrawn, investors, roi, APY }, dispatch] =
-    useReducer((state, payload) => ({ ...state, ...payload }), initialState);
+  const [{ totalValueLocked, withdrawn, investors }, dispatch] = useReducer(
+    (state, payload) => ({ ...state, ...payload }),
+    initialState
+  );
 
   const loadOverviewData = async () => {
     try {
@@ -46,20 +49,28 @@ export default function Overview() {
               methodName: "getTotalRewards",
               methodParameters: [],
             },
+            {
+              reference: "getBalance",
+              methodName: "getBalance",
+              methodParameters: [],
+            },
           ],
         },
       ];
 
       const { results: response } = await multicall.call(contractCallContext);
-      const results = parseMulticallResponse(response);
+      const results = parseOverviewMulticallResponse(response);
 
-      dispatch({ isDataLoading: false, ...results });
+      dispatch({ ...results });
     } catch (err) {}
+    dispatch({ isDataLoading: false });
   };
 
   useEffect(() => {
     account && loadOverviewData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
+
   return (
     <Container className="overview-container">
       <h4 className="heading">Overview</h4>
@@ -67,7 +78,7 @@ export default function Overview() {
       <div className="card-main overview-section">
         <div className="overview-item">
           <h5>TVL</h5>
-          <p>100.2340,00</p>
+          <p>{totalValueLocked}</p>
         </div>
         <div className="overview-item">
           <h5>Withdrawn</h5>
