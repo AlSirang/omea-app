@@ -5,7 +5,7 @@ export default function PageLayout({ children }) {
   return (
     <>
       <Header />
-      {children}
+      <div className="layout-container">{children}</div>
 
       <Footer />
     </>

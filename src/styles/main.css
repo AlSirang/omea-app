@@ -15,7 +15,13 @@ body {
   --bs-navbar-color: #fff;
   --bs-nav-link-color: #fff;
 }
-
+.layout-container {
+  padding-top: 5rem;
+}
+.header-container {
+  background-color: var(--bs-dark-rgb);
+  padding-top: 1rem;
+}
 .btn-primary {
   --on-hover: rgba(255, 215, 0, 0.8);
 

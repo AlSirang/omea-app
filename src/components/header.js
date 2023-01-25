@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "assets/logos/logo-main.svg";
-import { useNavigate } from "react-router-dom";
+import logoGoldIcon from "assets/logos/logo-gold.svg";
 
 export default function Header() {
   const navigation = useNavigate();
@@ -9,10 +10,27 @@ export default function Header() {
     navigation("/dapp");
   };
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      variant="dark"
+      fixed="top"
+      className="pt-0"
+    >
+      <Container className="pb-2 header-container">
         <Navbar.Brand href="/">
-          <img src={logoIcon} height="50" alt="omea logo" />
+          <img
+            src={logoIcon}
+            height="50"
+            alt="omea logo"
+            className="d-none d-md-block"
+          />
+          <img
+            src={logoGoldIcon}
+            height="50"
+            alt="omea logo"
+            className="d-block d-md-none"
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
