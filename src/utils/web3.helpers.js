@@ -3,7 +3,7 @@ import { CONTRACT_ABI, CONTRACT_ADDRESS } from "src/contract/constants";
 import { getRpcProvider } from "./constants";
 import { parseReferralMulticallResponse } from "./helpers";
 
-export const loadInvestorInfo = async (account) => {
+export const getInvestorInfo = async (account) => {
   const multicall = new Multicall({
     ethersProvider: getRpcProvider(),
     tryAggregate: true,
