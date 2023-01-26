@@ -48,3 +48,9 @@ button.btn-withdraw {
 /* // X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
 }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
