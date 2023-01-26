@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { WalletUserContext } from "src/context";
-import { shortenAddress } from "src/context/constants";
+import { shortenAddress } from "src/utils/constants";
 import profileIcon from "assets/Icons/profile.svg";
 
 export const DappButton = () => {

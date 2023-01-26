@@ -2,6 +2,9 @@ import { ethers } from "ethers";
 import { ACCEPTED_CHAIN_ID, chainInfo } from "src/context/constants";
 import { contractsInfo } from "src/contract/constants";
 
+export const shortenAddress = (address) =>
+  `${address.slice(0, 5)}...${address.slice(-5)}`;
+
 export const getRpcProvider = () => {
   const RPC_URL = chainInfo[ACCEPTED_CHAIN_ID].rpc;
   return new ethers.providers.JsonRpcProvider(RPC_URL);

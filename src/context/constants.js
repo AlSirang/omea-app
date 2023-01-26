@@ -7,9 +7,6 @@ export const TX_STATUS = {
   REJECTED: "REJECTED",
 };
 
-export const shortenAddress = (address) =>
-  `${address.slice(0, 5)}...${address.slice(-5)}`;
-
 export const chainInfo = {
   "0x38": {
     blockExplorer: "https://bscscan.com",
