@@ -1,0 +1,82 @@
+.overlay-effect-background,
+.overlay-effect-container {
+  position: absolute;
+}
+
+.overlay-effect-background {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.overlay-effect-container {
+  width: 100%;
+  min-height: 20rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(50px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-dialog.tx-modal {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 2vh;
+
+  --bs-modal-padding: 1.5px;
+  --bs-modal-bg: transparent;
+}
+
+.modal-height {
+  min-height: 20rem;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tx-modal-text {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.tx-para {
+  font-size: 1.3rem;
+}
+
+button.button-overrides {
+  border-radius: 20px;
+  padding: 5px 30px;
+  color: #fff;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  transition: all 0.25s;
+}
+
+button.button-overrides:hover,
+button.button-overrides:focus,
+button.button-overrides:checked,
+button.button-overrides:active {
+  color: #fff;
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.modal-image {
+  width: 100%;
+}
+
+.modal-container {
+  padding: 1rem;
+}
