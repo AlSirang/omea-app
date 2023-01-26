@@ -24,3 +24,16 @@ export const parseReferralMulticallResponse = (response) => {
     referAmount: ethers.utils.formatEther(values[7]),
   };
 };
+
+export const parseTransactionError = (error) => {
+  const {
+    error: { reason },
+  } = { error };
+  return reason || "Transaction failed";
+};
+
+export const getReferralFromURL = () => {
+  const params = new URL(document.location).searchParams;
+
+  return params.get("referral");
+};
