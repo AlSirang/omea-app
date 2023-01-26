@@ -1,7 +1,8 @@
 import { Multicall } from "ethereum-multicall";
+import { ethers } from "ethers";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
 import { contractsInfo } from "src/contract/constants";
-import { getRpcProvider } from "./constants";
+import { getBusdContractInstance, getRpcProvider } from "./constants";
 import { parseReferralMulticallResponse } from "./helpers";
 
 export const getInvestorInfo = async (account) => {
@@ -30,4 +31,12 @@ export const getInvestorInfo = async (account) => {
 
   const { results: response } = await multicall.call(contractCallContext);
   return parseReferralMulticallResponse(response);
+};
+
+export const getBalance = async (account) => {
+  const busdContractInstance = getBusdContractInstance(getRpcProvider());
+
+  return ethers.utils.formatEther(
+    await busdContractInstance.balanceOf(account)
+  );
 };

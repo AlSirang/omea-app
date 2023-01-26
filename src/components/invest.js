@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import { WalletUserContext } from "src/context";
-import { getInvestorInfo } from "src/utils/web3.helpers";
+import { getBalance, getInvestorInfo } from "src/utils/web3.helpers";
 import {
   firstNPostiveNumbersAfterDecimal,
   getBusdContractInstance,
@@ -20,6 +20,7 @@ const initialState = {
   lastCalculationDate: 0,
   claimableAmount: 0,
   claimedAmount: 0,
+  walletBalance: 0,
 };
 
 export default function InvestSection() {
@@ -27,8 +28,10 @@ export default function InvestSection() {
     contextState: { account, signer },
   } = WalletUserContext();
 
-  const [{ totalLocked, claimableAmount, claimedAmount }, dispatch] =
-    useReducer((state, payload) => ({ ...state, ...payload }), initialState);
+  const [
+    { totalLocked, claimableAmount, claimedAmount, walletBalance },
+    dispatch,
+  ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
 
   const OnclaimRewards = async () => {
     try {
@@ -48,6 +51,7 @@ export default function InvestSection() {
    * @param {Event} event
    */
   const onDeposit = async (event) => {
+    console.log("onDeposit");
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const amount = data.get("amount");
@@ -61,6 +65,7 @@ export default function InvestSection() {
         await busdContractInstance.allowance(account, omeaContract)
       );
 
+      console.log({ allowance });
       // check allowance
       if (allowance < amount) {
         // new allowance
@@ -85,7 +90,7 @@ export default function InvestSection() {
       const amountInWei = ethers.utils.parseEther(amount);
 
       const omeaContractInstance = getOmeaContractInstance(signer);
-      const tx = omeaContractInstance.deposit(amountInWei, referral);
+      const tx = await omeaContractInstance.deposit(amountInWei, referral);
       const reciept = await tx.wait();
       console.log(reciept);
     } catch (err) {
@@ -99,8 +104,11 @@ export default function InvestSection() {
     try {
       dispatch({ isDataLoading: true });
 
-      const results = await getInvestorInfo(account);
-      dispatch({ ...results });
+      const [walletBalance, results] = await Promise.all([
+        getBalance(account),
+        getInvestorInfo(account),
+      ]);
+      dispatch({ ...results, walletBalance });
     } catch (err) {}
 
     dispatch({ isDataLoading: false });
@@ -122,7 +130,7 @@ export default function InvestSection() {
           <div className="invest-info">
             <div>
               <h5 className="invest-title">Balance</h5>
-              <p className="invest-para">100.2340,00</p>
+              <p className="invest-para">{walletBalance}</p>
             </div>
             <div>
               <h5 className="invest-title">Staked</h5>
