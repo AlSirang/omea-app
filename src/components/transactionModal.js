@@ -1,5 +1,5 @@
 import { Container, Modal } from "react-bootstrap";
-import LineOfDots from "./LineOfDots";
+import LineOfDots from "./lineOfDots";
 import { ACCEPTED_CHAIN_ID, chainInfo, TX_STATUS } from "src/context/constants";
 import { shortenAddress } from "src/utils/constants";
 import "src/styles/transactionModal.css";
@@ -22,7 +22,7 @@ export const TransactionModal = ({
 
                 <div dangerouslySetInnerHTML={{ __html: modalText }} />
                 {TX_STATUS.PENDING === txStatus && (
-                  <div className="mt-4 w-100">
+                  <div className="my-4 w-100">
                     <LineOfDots />
                   </div>
                 )}
