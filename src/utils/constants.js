@@ -1,9 +1,21 @@
 import { ethers } from "ethers";
 import { ACCEPTED_CHAIN_ID, chainInfo } from "src/context/constants";
+import { contractsInfo } from "src/contract/constants";
 
 export const getRpcProvider = () => {
   const RPC_URL = chainInfo[ACCEPTED_CHAIN_ID].rpc;
   return new ethers.providers.JsonRpcProvider(RPC_URL);
+};
+export const getOmeaContractInstance = (provider) => {
+  const { CONTRACT_ADDRESS, CONTRACT_ABI } =
+    contractsInfo[ACCEPTED_CHAIN_ID].omea;
+  return new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
+};
+
+export const getBusdContractInstance = (provider) => {
+  const { CONTRACT_ADDRESS, CONTRACT_ABI } =
+    contractsInfo[ACCEPTED_CHAIN_ID].busd;
+  return new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
 };
 
 export const firstNPostiveNumbersAfterDecimal = (number, n = 4) => {
