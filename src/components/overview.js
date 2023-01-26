@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import { Container } from "react-bootstrap";
 import { Multicall } from "ethereum-multicall";
 import {
@@ -22,12 +22,47 @@ const initialState = {
 };
 
 export default function Overview() {
+  const isComponentMounted = useRef(false);
   const {
-    contextState: { account },
+    contextState: { account, ethersProvider },
   } = WalletUserContext();
 
   const [{ APY, totalValueLocked, withdrawn, investors }, dispatch] =
     useReducer((state, payload) => ({ ...state, ...payload }), initialState);
+
+  const loadWalletData = async () => {
+    try {
+      const { totalLocked: _totalLocked } = await getInvestorInfo(account);
+      const totalLocked = ethers.utils.parseEther(_totalLocked.toString());
+      const multicall = new Multicall({
+        ethersProvider: ethersProvider || getRpcProvider(),
+        tryAggregate: true,
+      });
+
+      const { CONTRACT_ADDRESS, CONTRACT_ABI } =
+        contractsInfo[ACCEPTED_CHAIN_ID].omea;
+      const contractCallContext = [
+        {
+          reference: "omea",
+          contractAddress: CONTRACT_ADDRESS,
+          abi: CONTRACT_ABI,
+          calls: [
+            {
+              reference: "getApr",
+              methodName: "getApr",
+              methodParameters: [totalLocked],
+            },
+          ],
+        },
+      ];
+      const { results: response } = await multicall.call(contractCallContext);
+      const { callsReturnContext } = response.omea;
+
+      dispatch({
+        APY: parseInt(callsReturnContext[0].returnValues[0].hex) / 100, // convert from BPs to %age
+      });
+    } catch (err) {}
+  };
 
   const loadOverviewData = async () => {
     try {
@@ -35,9 +70,6 @@ export default function Overview() {
         ethersProvider: getRpcProvider(),
         tryAggregate: true,
       });
-
-      const { totalLocked: _totalLocked } = await getInvestorInfo(account);
-      const totalLocked = ethers.utils.parseEther(_totalLocked.toString());
 
       const { CONTRACT_ADDRESS, CONTRACT_ABI } =
         contractsInfo[ACCEPTED_CHAIN_ID].omea;
@@ -62,11 +94,6 @@ export default function Overview() {
               methodName: "getBalance",
               methodParameters: [],
             },
-            {
-              reference: "getApr",
-              methodName: "getApr",
-              methodParameters: [totalLocked],
-            },
           ],
         },
       ];
@@ -74,7 +101,6 @@ export default function Overview() {
       const { results: response } = await multicall.call(contractCallContext);
       const results = parseOverviewMulticallResponse(response);
 
-      console.log(results);
       dispatch({ ...results });
     } catch (err) {
       console.log(err);
@@ -83,7 +109,12 @@ export default function Overview() {
   };
 
   useEffect(() => {
-    account && loadOverviewData();
+    account && loadWalletData();
+
+    if (!isComponentMounted.current) {
+      isComponentMounted.current = true;
+      loadOverviewData();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
 

@@ -4,7 +4,6 @@ export const parseOverviewMulticallResponse = (response) => {
   const { callsReturnContext } = response.omea;
   return {
     investors: parseInt(callsReturnContext[0].returnValues[0].hex),
-    APY: parseInt(callsReturnContext[3].returnValues[0].hex) / 100, // convert from BPs to %age
     withdrawn: ethers.utils.formatEther(callsReturnContext[1].returnValues[0]),
     totalValueLocked: ethers.utils.formatEther(
       callsReturnContext[2].returnValues[0]
