@@ -1,7 +1,33 @@
-import abi from "assets/abi/omea.abi.json";
+import OMEA_ABI from "assets/abi/omea.abi.json";
+import BUSD_ABI from "assets/abi/busd.abi.json";
 
-export const CONTRACT_ABI = abi;
-export const CONTRACT_ADDRESS = "0x024E4aD4da503246b0BD783727a74AbeF443B2fF";
+export const contractsInfo = {
+  // mainnet main info
+  "0x38": {
+    omea: {
+      CONTRACT_ADDRESS: "",
+      CONTRACT_ABI: OMEA_ABI,
+    },
+
+    busd: {
+      CONTRACT_ADDRESS: "",
+      CONTRACT_ABI: BUSD_ABI,
+    },
+  },
+
+  // testnet contracts info
+  "0x61": {
+    omea: {
+      CONTRACT_ADDRESS: "0x024E4aD4da503246b0BD783727a74AbeF443B2fF",
+      CONTRACT_ABI: OMEA_ABI,
+    },
+
+    busd: {
+      CONTRACT_ADDRESS: "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7",
+      CONTRACT_ABI: BUSD_ABI,
+    },
+  },
+};
 
 /* Write Functions
 - claimAllReward - claims all reward for user

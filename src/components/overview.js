@@ -6,11 +6,12 @@ import {
   getRpcProvider,
 } from "src/utils/constants";
 import { WalletUserContext } from "src/context";
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "src/contract/constants";
+import { contractsInfo } from "src/contract/constants";
 import { parseOverviewMulticallResponse } from "src/utils/helpers";
 import "src/styles/dapp/overview.css";
 import { getInvestorInfo } from "src/utils/web3.helpers";
 import { ethers } from "ethers";
+import { ACCEPTED_CHAIN_ID } from "src/context/constants";
 
 const initialState = {
   isDataLoading: false,
@@ -38,6 +39,8 @@ export default function Overview() {
       const { totalLocked: _totalLocked } = await getInvestorInfo(account);
       const totalLocked = ethers.utils.parseEther(_totalLocked.toString());
 
+      const { CONTRACT_ADDRESS, CONTRACT_ABI } =
+        contractsInfo[ACCEPTED_CHAIN_ID].omea;
       const contractCallContext = [
         {
           reference: "omea",

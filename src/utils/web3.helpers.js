@@ -1,5 +1,6 @@
 import { Multicall } from "ethereum-multicall";
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "src/contract/constants";
+import { ACCEPTED_CHAIN_ID } from "src/context/constants";
+import { contractsInfo } from "src/contract/constants";
 import { getRpcProvider } from "./constants";
 import { parseReferralMulticallResponse } from "./helpers";
 
@@ -8,6 +9,9 @@ export const getInvestorInfo = async (account) => {
     ethersProvider: getRpcProvider(),
     tryAggregate: true,
   });
+
+  const { CONTRACT_ADDRESS, CONTRACT_ABI } =
+    contractsInfo[ACCEPTED_CHAIN_ID].omea;
 
   const contractCallContext = [
     {
