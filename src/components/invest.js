@@ -12,6 +12,13 @@ import "src/styles/dapp/invest.css";
 import { ethers } from "ethers";
 import { contractsInfo } from "src/contract/constants";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
+import {
+  onPending,
+  onRejected,
+  onSuccess,
+  onTxHash,
+  TransactionModal,
+} from "./transactionModal";
 
 const initialState = {
   isDataLoading: false,
@@ -21,17 +28,26 @@ const initialState = {
   claimableAmount: 0,
   claimedAmount: 0,
   walletBalance: 0,
+  modalText: null,
+  txStatus: null,
 };
 
 export default function InvestSection() {
+  const [
+    {
+      totalLocked,
+      claimableAmount,
+      claimedAmount,
+      walletBalance,
+      modalText,
+      txStatus,
+    },
+    dispatch,
+  ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
+
   const {
     contextState: { account, signer },
   } = WalletUserContext();
-
-  const [
-    { totalLocked, claimableAmount, claimedAmount, walletBalance },
-    dispatch,
-  ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
 
   const OnclaimRewards = async () => {
     try {
@@ -57,6 +73,9 @@ export default function InvestSection() {
     const amount = data.get("amount");
 
     try {
+      onPending({
+        dispatch,
+      });
       const { CONTRACT_ADDRESS: omeaContract } =
         contractsInfo[ACCEPTED_CHAIN_ID].omea;
 
@@ -81,23 +100,53 @@ export default function InvestSection() {
           omeaContract,
           allowanceToApprove
         );
-        const reciept = await tx.wait();
-        console.log(reciept);
+
+        const txHash = tx.hash;
+        onTxHash({
+          dispatch,
+          txHash,
+        });
+        await tx.wait();
       }
 
+      onPending({
+        dispatch,
+      });
       const referral = getReferralFromURL() || ethers.constants.AddressZero;
 
       const amountInWei = ethers.utils.parseEther(amount);
 
       const omeaContractInstance = getOmeaContractInstance(signer);
       const tx = await omeaContractInstance.deposit(amountInWei, referral);
+      const txHash = tx.hash;
+      onTxHash({
+        dispatch,
+        txHash,
+      });
       const reciept = await tx.wait();
       console.log(reciept);
+
+      onSuccess({
+        dispatch,
+        txHash,
+      });
     } catch (err) {
       console.log({ err });
       const reason = parseTransactionError(err);
       console.log(reason);
+
+      onRejected({
+        dispatch,
+        reason,
+      });
     }
+  };
+
+  const onModalClose = () => {
+    dispatch({
+      modalText: null,
+      txStatus: null,
+    });
   };
 
   const loadReferralData = async () => {
@@ -192,6 +241,13 @@ export default function InvestSection() {
           </button>
         </div>
       </div>
+
+      <TransactionModal
+        show={Boolean(modalText)}
+        txStatus={txStatus}
+        modalText={modalText}
+        onClose={onModalClose}
+      />
     </div>
   );
 }
