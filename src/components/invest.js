@@ -7,11 +7,10 @@ import {
   getOmeaContractInstance,
 } from "src/utils/constants";
 import { getReferralFromURL, parseTransactionError } from "src/utils/helpers";
-import icon from "assets/Icons/busdIcon.png";
-import "src/styles/dapp/invest.css";
 import { ethers } from "ethers";
 import { contractsInfo } from "src/contract/constants";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
+import { DappContextConsumer } from "pages/dapp/context";
 import {
   onPending,
   onRejected,
@@ -19,6 +18,8 @@ import {
   onTxHash,
   TransactionModal,
 } from "./transactionModal";
+import icon from "assets/Icons/busdIcon.png";
+import "src/styles/dapp/invest.css";
 
 const initialState = {
   isDataLoading: false,
@@ -49,6 +50,29 @@ export default function InvestSection() {
     contextState: { account, signer },
   } = WalletUserContext();
 
+  const { shouldRefresh, setShouldRefresh } = DappContextConsumer();
+
+  const loadReferralData = async () => {
+    try {
+      dispatch({ isDataLoading: true });
+
+      const [walletBalance, results] = await Promise.all([
+        getBalance(account),
+        getInvestorInfo(account),
+      ]);
+      dispatch({ ...results, walletBalance });
+    } catch (err) {}
+
+    dispatch({ isDataLoading: false });
+  };
+  useEffect(() => {
+    account && loadReferralData();
+
+    console.log({ shouldRefreshI: shouldRefresh });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account, shouldRefresh]);
+
   const OnclaimRewards = async () => {
     try {
       console.log("onClaim");
@@ -56,6 +80,8 @@ export default function InvestSection() {
       const tx = await contract.claimAllReward();
       const reciept = await tx.wait();
       console.log(reciept);
+
+      await loadReferralData();
     } catch (err) {
       const reason = parseTransactionError(err);
       console.log(reason);
@@ -67,7 +93,6 @@ export default function InvestSection() {
    * @param {Event} event
    */
   const onDeposit = async (event) => {
-    console.log("onDeposit");
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const amount = data.get("amount");
@@ -84,9 +109,8 @@ export default function InvestSection() {
         await busdContractInstance.allowance(account, omeaContract)
       );
 
-      console.log({ allowance });
       // check allowance
-      if (allowance < amount) {
+      if (allowance < Number(amount)) {
         // new allowance
         const allowanceToApprove = ethers.utils.parseEther(
           (1e10).toLocaleString("fullwide", {
@@ -112,7 +136,7 @@ export default function InvestSection() {
       onPending({
         dispatch,
       });
-      const referral = getReferralFromURL() || ethers.constants.AddressZero;
+      const referral = getReferralFromURL() || account;
 
       const amountInWei = ethers.utils.parseEther(amount);
 
@@ -130,10 +154,11 @@ export default function InvestSection() {
         dispatch,
         txHash,
       });
+
+      setShouldRefresh(txHash);
     } catch (err) {
       console.log({ err });
       const reason = parseTransactionError(err);
-      console.log(reason);
 
       onRejected({
         dispatch,
@@ -148,24 +173,6 @@ export default function InvestSection() {
       txStatus: null,
     });
   };
-
-  const loadReferralData = async () => {
-    try {
-      dispatch({ isDataLoading: true });
-
-      const [walletBalance, results] = await Promise.all([
-        getBalance(account),
-        getInvestorInfo(account),
-      ]);
-      dispatch({ ...results, walletBalance });
-    } catch (err) {}
-
-    dispatch({ isDataLoading: false });
-  };
-  useEffect(() => {
-    account && loadReferralData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
 
   return (
     <div>

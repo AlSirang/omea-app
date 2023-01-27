@@ -1,17 +1,18 @@
 import React, { useEffect, useReducer, useRef } from "react";
 import { Container } from "react-bootstrap";
 import { Multicall } from "ethereum-multicall";
+import { ethers } from "ethers";
 import {
   firstNPostiveNumbersAfterDecimal,
   getRpcProvider,
 } from "src/utils/constants";
-import { WalletUserContext } from "src/context";
 import { contractsInfo } from "src/contract/constants";
 import { parseOverviewMulticallResponse } from "src/utils/helpers";
-import "src/styles/dapp/overview.css";
 import { getInvestorInfo } from "src/utils/web3.helpers";
-import { ethers } from "ethers";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
+import { WalletUserContext } from "src/context";
+import { DappContextConsumer } from "pages/dapp/context";
+import "src/styles/dapp/overview.css";
 
 const initialState = {
   isDataLoading: false,
@@ -26,6 +27,8 @@ export default function Overview() {
   const {
     contextState: { account, ethersProvider },
   } = WalletUserContext();
+
+  const { shouldRefresh } = DappContextConsumer();
 
   const [{ APY, totalValueLocked, withdrawn, investors }, dispatch] =
     useReducer((state, payload) => ({ ...state, ...payload }), initialState);
@@ -115,8 +118,9 @@ export default function Overview() {
       isComponentMounted.current = true;
       loadOverviewData();
     }
+    console.log({ shouldRefreshO: shouldRefresh });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+  }, [account, shouldRefresh]);
 
   return (
     <Container className="overview-container">

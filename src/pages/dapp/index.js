@@ -7,24 +7,28 @@ import LiveTradeTable from "components/liveTrade";
 import Overview from "components/overview";
 import Referral from "components/referral";
 import { useCheckWalletConnection } from "src/hooks/web3.hooks";
+import { DappContextProvider } from "./context";
 import "src/styles/dapp/index.css";
 
 export default function Dapp() {
   useCheckWalletConnection();
+
   return (
-    <PageLayout isDappPage>
-      <Overview />
-      <Container className="investment-section">
-        <InvestSection />
-        <DepositHistory />
-      </Container>
+    <DappContextProvider>
+      <PageLayout isDappPage>
+        <Overview />
+        <Container className="investment-section">
+          <InvestSection />
+          <DepositHistory />
+        </Container>
 
-      <Container className="referral-section">
-        <Bonusvouchers />
-        <Referral />
-      </Container>
+        <Container className="referral-section">
+          <Bonusvouchers />
+          <Referral />
+        </Container>
 
-      <LiveTradeTable />
-    </PageLayout>
+        <LiveTradeTable />
+      </PageLayout>
+    </DappContextProvider>
   );
 }
