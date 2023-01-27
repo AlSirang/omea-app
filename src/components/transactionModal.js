@@ -79,7 +79,7 @@ export const onSuccess = ({ dispatch = () => null, txHash = null }) => {
 
   dispatch({
     modalText: `
-    <h3 class="tx-modal-text tx-para">Mint Successful, <a target="_blank" rel="noreferrer" href="${blockExplorerUrl}/tx/${txHash}"> ${shortenAddress(
+    <h3 class="tx-modal-text tx-para">Transaction Successful, <a target="_blank" rel="noreferrer" href="${blockExplorerUrl}/tx/${txHash}"> ${shortenAddress(
       txHash
     )} </a>
     </h3>
