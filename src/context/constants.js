@@ -29,7 +29,7 @@ export const chainInfo = {
   },
   "0x61": {
     blockExplorer: "https://testnet.bscscan.com",
-    rpc: "https://data-seed-prebsc-2-s1.binance.org:8545",
+    rpc: "https://endpoints.omniatech.io/v1/bsc/testnet/public",
     info: {
       chainId: 97,
       network: "binancetest",
