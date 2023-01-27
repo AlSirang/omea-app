@@ -6,9 +6,11 @@ import InvestSection from "components/invest";
 import LiveTradeTable from "components/liveTrade";
 import Overview from "components/overview";
 import Referral from "components/referral";
+import { useCheckWalletConnection } from "src/hooks/web3.hooks";
 import "src/styles/dapp/index.css";
 
 export default function Dapp() {
+  useCheckWalletConnection();
   return (
     <PageLayout isDappPage>
       <Overview />
