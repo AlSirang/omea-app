@@ -348,7 +348,7 @@
           { "internalType": "uint256", "name": "amount", "type": "uint256" },
           { "internalType": "uint256", "name": "payAmount", "type": "uint256" }
         ],
-        "internalType": "struct Omea.BonusSigData",
+        "internalType": "struct OmeaApp.BonusSigData",
         "name": "bonus",
         "type": "tuple"
       },
@@ -358,7 +358,7 @@
           { "internalType": "bytes32", "name": "r", "type": "bytes32" },
           { "internalType": "bytes32", "name": "s", "type": "bytes32" }
         ],
-        "internalType": "struct Omea.Sig",
+        "internalType": "struct OmeaApp.Sig",
         "name": "sig",
         "type": "tuple"
       }
