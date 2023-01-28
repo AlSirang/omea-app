@@ -1,14 +1,13 @@
 import React, { useEffect, useReducer, useRef } from "react";
 import { Container } from "react-bootstrap";
 import { Multicall } from "ethereum-multicall";
-import { ethers } from "ethers";
 import {
   firstNPostiveNumbersAfterDecimal,
   getRpcProvider,
 } from "src/utils/constants";
 import { contractsInfo } from "src/contract/constants";
 import { parseOverviewMulticallResponse } from "src/utils/helpers";
-import { getInvestorInfo } from "src/utils/web3.helpers";
+import { getWalletAPY } from "src/utils/web3.helpers";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
 import { WalletUserContext } from "src/context";
 import { DappContextConsumer } from "pages/dapp/context";
@@ -35,34 +34,9 @@ export default function Overview() {
 
   const loadWalletData = async () => {
     try {
-      const { totalLocked: _totalLocked } = await getInvestorInfo(account);
-      const totalLocked = ethers.utils.parseEther(_totalLocked.toString());
-      const multicall = new Multicall({
-        ethersProvider: ethersProvider || getRpcProvider(),
-        tryAggregate: true,
-      });
-
-      const { CONTRACT_ADDRESS, CONTRACT_ABI } =
-        contractsInfo[ACCEPTED_CHAIN_ID].omea;
-      const contractCallContext = [
-        {
-          reference: "omea",
-          contractAddress: CONTRACT_ADDRESS,
-          abi: CONTRACT_ABI,
-          calls: [
-            {
-              reference: "getApr",
-              methodName: "getApr",
-              methodParameters: [totalLocked],
-            },
-          ],
-        },
-      ];
-      const { results: response } = await multicall.call(contractCallContext);
-      const { callsReturnContext } = response.omea;
-
+      const APY = await getWalletAPY(account, ethersProvider);
       dispatch({
-        APY: parseInt(callsReturnContext[0].returnValues[0].hex) / 100, // convert from BPs to %age
+        APY,
       });
     } catch (err) {}
   };
@@ -118,7 +92,6 @@ export default function Overview() {
       isComponentMounted.current = true;
       loadOverviewData();
     }
-    console.log({ shouldRefreshO: shouldRefresh });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account, shouldRefresh]);
 

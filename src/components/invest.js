@@ -1,6 +1,10 @@
 import React, { useEffect, useReducer } from "react";
 import { WalletUserContext } from "src/context";
-import { getBalance, getInvestorInfo } from "src/utils/web3.helpers";
+import {
+  getBalance,
+  getInvestorInfo,
+  getWalletAPY,
+} from "src/utils/web3.helpers";
 import {
   firstNPostiveNumbersAfterDecimal,
   getBusdContractInstance,
@@ -31,6 +35,7 @@ const initialState = {
   walletBalance: 0,
   modalText: null,
   txStatus: null,
+  APY: 0,
 };
 
 export default function InvestSection() {
@@ -42,6 +47,7 @@ export default function InvestSection() {
       walletBalance,
       modalText,
       txStatus,
+      APY,
     },
     dispatch,
   ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
@@ -60,7 +66,11 @@ export default function InvestSection() {
         getBalance(account),
         getInvestorInfo(account),
       ]);
+
       dispatch({ ...results, walletBalance });
+
+      const APY = await getWalletAPY(account);
+      dispatch({ APY });
     } catch (err) {}
 
     dispatch({ isDataLoading: false });
@@ -68,23 +78,39 @@ export default function InvestSection() {
   useEffect(() => {
     account && loadReferralData();
 
-    console.log({ shouldRefreshI: shouldRefresh });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account, shouldRefresh]);
 
+  /**
+   * @dev it will call claimAllReward function from contract
+   */
   const OnclaimRewards = async () => {
     try {
-      console.log("onClaim");
+      onPending({
+        dispatch,
+      });
       const contract = getOmeaContractInstance(signer);
       const tx = await contract.claimAllReward();
-      const reciept = await tx.wait();
-      console.log(reciept);
+      const txHash = tx.hash;
+
+      onTxHash({
+        dispatch,
+        txHash,
+      });
+      await tx.wait();
+
+      onSuccess({
+        dispatch,
+        txHash,
+      });
 
       await loadReferralData();
     } catch (err) {
       const reason = parseTransactionError(err);
-      console.log(reason);
+      onRejected({
+        dispatch,
+        reason,
+      });
     }
   };
 
@@ -147,8 +173,7 @@ export default function InvestSection() {
         dispatch,
         txHash,
       });
-      const reciept = await tx.wait();
-      console.log(reciept);
+      await tx.wait();
 
       onSuccess({
         dispatch,
@@ -157,7 +182,6 @@ export default function InvestSection() {
 
       setShouldRefresh(txHash);
     } catch (err) {
-      console.log({ err });
       const reason = parseTransactionError(err);
 
       onRejected({
@@ -234,11 +258,15 @@ export default function InvestSection() {
           </div>
           <div className="invest-gird-inner">
             <h5 className="invest-title">BUSD per Day</h5>
-            <p className="invest-para">100.2340,00</p>
+            <p className="invest-para">
+              {firstNPostiveNumbersAfterDecimal((APY / 365) * totalLocked)}
+            </p>
           </div>
           <div className="invest-gird-inner">
             <h5 className="invest-title">BUSD per Hour</h5>
-            <p className="invest-para">100.2340,00</p>
+            <p className="invest-para">
+              {firstNPostiveNumbersAfterDecimal((APY / 8760) * totalLocked)}
+            </p>
           </div>
         </div>
 
