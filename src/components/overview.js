@@ -140,7 +140,7 @@ export default function Overview() {
           <p>{investors}</p>
         </div>
         <div className="overview-item">
-          <h5>Your ROI</h5>
+          <h5>Daily ROI</h5>
           <p>{firstNPostiveNumbersAfterDecimal(APY / 365, 2)}%</p>
         </div>
         <div className="overview-item">
