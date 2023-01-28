@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { DappButton, LandingPageButton } from "./units";
+import { Banner, DappButton, LandingPageButton } from "./units";
 import logoIcon from "assets/logos/logo-main.svg";
 import logoGoldIcon from "assets/logos/logo-gold.svg";
 import "src/styles/header.css";
@@ -11,7 +11,7 @@ export default function Header({ isDappPage }) {
       expand="lg"
       variant="dark"
       fixed="top"
-      className="pt-0"
+      className="pt-0 d-block"
     >
       <Container className="pb-2 header-container">
         <Navbar.Brand href="/">
@@ -55,6 +55,7 @@ export default function Header({ isDappPage }) {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      {!isDappPage && <Banner />}
     </Navbar>
   );
 }

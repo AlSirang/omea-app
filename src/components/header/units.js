@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { WalletUserContext } from "src/context";
 import { shortenAddress } from "src/utils/constants";
 import profileIcon from "assets/Icons/profile.svg";
+import rocketIcon from "assets/Icons/rocket.svg";
 
 export const DappButton = () => {
   const { walletConnect, contextState } = WalletUserContext();
@@ -33,5 +34,29 @@ export const LandingPageButton = () => {
     <button onClick={onEnterApp} className="btn btn-primary">
       <strong>Enter App</strong>
     </button>
+  );
+};
+
+export const Banner = () => {
+  return (
+    <div
+      className="py-2 pt-3 d-flex align-items-center justify-content-center"
+      style={{
+        background: "#fff",
+        color: "#000",
+        gap: 10,
+      }}
+    >
+      <img src={rocketIcon} alt="rocket" className="d-none d-md-block" />
+
+      <div className="d-flex flex-column align-items-center justify-content-center ">
+        <h3 style={{ fontWeight: "bold", textAlign: "center" }}>
+          OMEA IS LAUNCHING ON - Friday, Feb 3, 9:00 AM (CET){" "}
+        </h3>
+
+        <p className="m-0">Join our community to stay updated</p>
+      </div>
+      <img src={rocketIcon} alt="rocket" className="d-none d-md-block" />
+    </div>
   );
 };

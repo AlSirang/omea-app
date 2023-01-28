@@ -6,7 +6,7 @@ import "src/styles/landingPageHero.css";
 
 export default function LandingPageHero() {
   return (
-    <Container className="container-hero section-padding">
+    <Container className="container-hero section-padding banner-height">
       <div className="grid">
         <div className="grid-col">
           <div data-aos="fade-up" data-aos-delay="500">
@@ -62,13 +62,10 @@ export default function LandingPageHero() {
             </div>
             <div className="card-text">
               <h3>
-                <strong>TVL</strong>
+                <strong>Daily ROI: 1.5%- 3.5%</strong>
               </h3>
               <h3>
-                <strong>ROI</strong>
-              </h3>
-              <h3>
-                <strong>APY</strong>
+                <strong>APY: 547% - 1277%</strong>
               </h3>
             </div>
           </div>
