@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { WalletUserContext } from "src/context";
 import { shortenAddress } from "src/utils/constants";
 import profileIcon from "assets/Icons/profile.svg";
@@ -26,14 +26,23 @@ export const DappButton = () => {
 };
 
 export const LandingPageButton = () => {
-  const navigation = useNavigate();
-  const onEnterApp = () => {
-    navigation("/dapp");
-  };
+  // const navigation = useNavigate();
+  // const onEnterApp = () => {
+  //   navigation("/dapp");
+  // };
   return (
-    <button onClick={onEnterApp} className="btn btn-primary">
-      <strong>Enter App</strong>
-    </button>
+    // <button onClick={onEnterApp} className="btn btn-primary">
+    //   <strong>Enter App</strong>
+    // </button>
+
+    <a
+      href="https://t.me/omeaapp"
+      target="_blank"
+      rel="noreferrer"
+      className="btn btn-primary"
+    >
+      <strong>Join Community</strong>
+    </a>
   );
 };
 

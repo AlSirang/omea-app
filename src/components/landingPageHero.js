@@ -3,10 +3,11 @@ import busdIconOne from "assets/Icons/busdIcon.png";
 import busdIconFlip from "assets/Icons/busdIconTilted.png";
 import lineIcon from "assets/Icons/line.svg";
 import "src/styles/landingPageHero.css";
+import { StartEarning } from "./button";
 
 export default function LandingPageHero() {
   return (
-    <Container className="container-hero section-padding banner-height">
+    <Container className="container-hero section-padding">
       <div className="grid">
         <div className="grid-col">
           <div data-aos="fade-up" data-aos-delay="500">
@@ -20,14 +21,7 @@ export default function LandingPageHero() {
             </p>
 
             <div className="button-container">
-              <a
-                href="https://t.me/omeaapp"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-lg btn-primary"
-              >
-                <strong>Join Community</strong>
-              </a>
+              <StartEarning />
             </div>
           </div>
         </div>
@@ -62,10 +56,13 @@ export default function LandingPageHero() {
             </div>
             <div className="card-text">
               <h3>
-                <strong>Daily ROI: 1.5%- 3.5%</strong>
+                <strong>TVL</strong>
               </h3>
               <h3>
-                <strong>APY: 547% - 1277%</strong>
+                <strong>ROI</strong>
+              </h3>
+              <h3>
+                <strong>APY</strong>
               </h3>
             </div>
           </div>
