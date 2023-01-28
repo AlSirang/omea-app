@@ -91,10 +91,20 @@
   object-fit: scale-down;
 }
 
+.card-text {
+  padding-top: 30px;
+  margin-left: -10px;
+}
 .card-text h3 {
   margin-top: 13px;
   margin-left: 54px;
   padding-bottom: 2px;
+}
+
+/* for banner */
+
+.banner-height {
+  margin-top: 350px;
 }
 
 /* // X-Small devices (portrait phones, less than 576px) */
@@ -163,6 +173,10 @@
   .busd-icon-bottom-right {
     bottom: 0px;
     left: -40px;
+  }
+
+  .banner-height {
+    margin-top: 150px;
   }
 }
 
