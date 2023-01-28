@@ -1,6 +1,6 @@
 /* table */
 .main-container {
-  margin-top: 50px;
+  margin-top: 100px;
 }
 .main-container h4 {
   text-transform: capitalize;
@@ -8,8 +8,7 @@
 .card-main-inner {
   padding: 10px 30px;
 }
-.table-main {
-}
+
 .table-head {
   color: #fff;
 }

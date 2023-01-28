@@ -1,9 +1,11 @@
+import { Container } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import "src/styles/livetrade.css";
+
 function LiveTradeTable() {
   return (
-    <div className="main-container d-sm-none">
-      <h4>Live trades</h4>
+    <Container className="main-container d-md-block d-none">
+      <h4 className="heading">Live trades</h4>
       <div className="card-main card-main-inner">
         <Table responsive="sm" className="table-main">
           <thead>
@@ -66,7 +68,7 @@ function LiveTradeTable() {
           </tbody>
         </Table>
       </div>
-    </div>
+    </Container>
   );
 }
 
