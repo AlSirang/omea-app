@@ -35,7 +35,11 @@ export default function Header({ isDappPage }) {
           className="justify-content-end"
         >
           <Nav className="gap-3">
-            <Nav.Link className="header-link" href="#deets">
+            <Nav.Link
+              className="header-link"
+              href={require("assets/whitepaper.pdf")}
+              target="blank"
+            >
               Whitepaper
             </Nav.Link>
             <Nav.Link className="header-link" href="#deets">
