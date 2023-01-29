@@ -22,8 +22,7 @@ export default function DepositHistory() {
 
   const loadDepositHistory = async () => {
     try {
-      console.log("loadDepositHistory");
-
+      dispatch({ isDataLoading: true });
       const contractInstance = getOmeaContractInstance(
         ethersProvider || getRpcProvider()
       );
@@ -45,14 +44,14 @@ export default function DepositHistory() {
         parseInt(withdrawPeriod._hex)
       );
 
-      console.log({ depostInfo });
-
       dispatch({
         depostInfo,
       });
     } catch (err) {
       console.log({ err });
     }
+
+    dispatch({ isDataLoading: false });
   };
   useEffect(() => {
     account && loadDepositHistory();
