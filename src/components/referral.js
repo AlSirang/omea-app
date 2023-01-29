@@ -3,6 +3,7 @@ import Progress from "components/progressBar";
 import { WalletUserContext } from "src/context";
 import { getInvestorInfo } from "src/utils/web3.helpers";
 import "src/styles/dapp/referral.css";
+import { getLevelInfo } from "src/utils/helpers";
 
 const initialState = {
   isDataLoading: false,
@@ -53,11 +54,13 @@ export default function Referral() {
     );
   };
 
+  const levelInfo = getLevelInfo(referCount);
+
   return (
     <div>
       <h4 className="heading">Referral</h4>
       <div className="card-main referral-card">
-        <Progress progress={50} />
+        <Progress {...levelInfo} />
 
         <div className="referral-info">
           <div className="referral-info-inner">
@@ -67,7 +70,7 @@ export default function Referral() {
             </div>
             <div>
               <h6>Bonus</h6>
-              <p>8%</p>
+              <p>{levelInfo.bonus}%</p>
             </div>
             <div>
               <h6>Referral Earnings</h6>

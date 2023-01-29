@@ -52,3 +52,26 @@ export const parseDepositHistory = (
     };
   });
 };
+
+export const getLevelInfo = (progress) => {
+  if (progress <= 10)
+    return {
+      now: progress,
+      level: 1,
+      max: 11,
+      bonus: 8,
+    };
+  if (progress <= 30)
+    return {
+      level: 2,
+      max: 31,
+      bonus: 9,
+      now: progress,
+    };
+  return {
+    level: 3,
+    max: 30,
+    bonus: 10,
+    now: 30,
+  };
+};

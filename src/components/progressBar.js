@@ -1,14 +1,17 @@
 import BootstrapProgressBar from "react-bootstrap/ProgressBar";
+import { firstNPostiveNumbersAfterDecimal } from "src/utils/constants";
 
-export default function ProgressBar({ progress = 0 }) {
+export default function ProgressBar({ now = 0, max = 10, level = 1 }) {
   return (
     <div className="progressBar-container">
-      <h4> level</h4>
+      <h4>level&nbsp; {level}</h4>
       <BootstrapProgressBar
         className="progress-bar"
         variant="warning"
-        now={60}
-        label={`${progress}`}
+        animated
+        now={now === 0 ? 1 : now}
+        max={max}
+        label={`${firstNPostiveNumbersAfterDecimal((now / max) * 100, 1)} %`}
       />
     </div>
   );
