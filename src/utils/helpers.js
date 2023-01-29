@@ -36,3 +36,19 @@ export const getReferralFromURL = () => {
 
   return params.get("referral");
 };
+
+export const parseDepositHistory = (
+  response = [],
+  withdrawPeriod = 2592000
+) => {
+  return response.map(({ depositAmount, depositAt, state }) => {
+    const _depositAt = parseInt(depositAt._hex);
+
+    return {
+      depositAmount: ethers.utils.formatEther(depositAmount),
+      withdrawPeriod: _depositAt + withdrawPeriod,
+      depositAt: _depositAt,
+      isActive: state,
+    };
+  });
+};
