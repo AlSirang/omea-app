@@ -20,7 +20,6 @@ export const RenderDepositHistory = ({
           <p> BUSD </p>
         </div>
       </div>
-      {/* d  h m s */}
       <div className="withraw-section">
         <div className="withdraw-duration">
           <div className="duration-item">
@@ -29,8 +28,11 @@ export const RenderDepositHistory = ({
           </div>
         </div>
 
-        {isActive && withdrawPeriod < Date.now() && (
-          <button className="btn btn-secondary btn-withdraw">
+        {isActive && (
+          <button
+            className="btn btn-secondary btn-withdraw"
+            disabled={!(withdrawPeriod < Date.now())}
+          >
             <strong>Withdraw</strong>
           </button>
         )}
