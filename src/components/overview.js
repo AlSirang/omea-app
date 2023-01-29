@@ -29,8 +29,10 @@ export default function Overview() {
 
   const { shouldRefresh } = DappContextConsumer();
 
-  const [{ APR, totalValueLocked, withdrawn, investors }, dispatch] =
-    useReducer((state, payload) => ({ ...state, ...payload }), initialState);
+  const [
+    { APR, totalValueLocked, withdrawn, investors, isDataLoading },
+    dispatch,
+  ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
 
   const loadWalletData = async () => {
     try {
@@ -43,6 +45,7 @@ export default function Overview() {
 
   const loadOverviewData = async () => {
     try {
+      dispatch({ isDataLoading: true });
       const multicall = new Multicall({
         ethersProvider: getRpcProvider(),
         tryAggregate: true,
