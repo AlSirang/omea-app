@@ -26,21 +26,7 @@ export const RenderDepositHistory = ({
           <div className="duration-item">
             <p>Withdraw Period</p>
             <Countdown date={withdrawPeriod} />
-            {/* <h6>d</h6>
-            <p>0</p> */}
           </div>
-          {/* <div className="duration-item">
-            <h6>h</h6>
-            <p>0</p>
-          </div>
-          <div className="duration-item">
-            <h6>m</h6>
-            <p>0</p>
-          </div>
-          <div className="duration-item">
-            <h6>s</h6>
-            <p>0</p>
-          </div> */}
         </div>
 
         {isActive && withdrawPeriod < Date.now() && (
