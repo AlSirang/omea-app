@@ -33,7 +33,7 @@ export const getInvestorInfo = async (account) => {
   return parseReferralMulticallResponse(response);
 };
 
-export const getWalletAPY = async (account, ethersProvider) => {
+export const getWalletAPR = async (account, ethersProvider) => {
   try {
     const { totalLocked: _totalLocked } = await getInvestorInfo(account);
     const totalLocked = ethers.utils.parseEther(_totalLocked.toString());

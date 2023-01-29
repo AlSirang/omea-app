@@ -3,7 +3,7 @@ import { WalletUserContext } from "src/context";
 import {
   getBalance,
   getInvestorInfo,
-  getWalletAPY,
+  getWalletAPR,
 } from "src/utils/web3.helpers";
 import {
   firstNPostiveNumbersAfterDecimal,
@@ -35,7 +35,7 @@ const initialState = {
   walletBalance: 0,
   modalText: null,
   txStatus: null,
-  APY: 0,
+  APR: 0,
 };
 
 export default function InvestSection() {
@@ -47,7 +47,7 @@ export default function InvestSection() {
       walletBalance,
       modalText,
       txStatus,
-      APY,
+      APR,
     },
     dispatch,
   ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
@@ -62,15 +62,13 @@ export default function InvestSection() {
     try {
       dispatch({ isDataLoading: true });
 
-      const [walletBalance, results] = await Promise.all([
+      const [walletBalance, results, APR] = await Promise.all([
         getBalance(account),
         getInvestorInfo(account),
+        getWalletAPR(account),
       ]);
 
-      dispatch({ ...results, walletBalance });
-
-      const APY = await getWalletAPY(account);
-      dispatch({ APY });
+      dispatch({ ...results, walletBalance, APR });
     } catch (err) {}
 
     dispatch({ isDataLoading: false });
@@ -259,13 +257,13 @@ export default function InvestSection() {
           <div className="invest-gird-inner">
             <h5 className="invest-title">BUSD per Day</h5>
             <p className="invest-para">
-              {firstNPostiveNumbersAfterDecimal((APY / 365) * totalLocked)}
+              {firstNPostiveNumbersAfterDecimal((totalLocked / 100) * APR)}
             </p>
           </div>
           <div className="invest-gird-inner">
             <h5 className="invest-title">BUSD per Hour</h5>
             <p className="invest-para">
-              {firstNPostiveNumbersAfterDecimal((APY / 8760) * totalLocked)}
+              {firstNPostiveNumbersAfterDecimal((totalLocked / 100) * APR) / 24}
             </p>
           </div>
         </div>

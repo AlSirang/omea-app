@@ -7,7 +7,7 @@ import {
 } from "src/utils/constants";
 import { contractsInfo } from "src/contract/constants";
 import { parseOverviewMulticallResponse } from "src/utils/helpers";
-import { getWalletAPY } from "src/utils/web3.helpers";
+import { getWalletAPR } from "src/utils/web3.helpers";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
 import { WalletUserContext } from "src/context";
 import { DappContextConsumer } from "pages/dapp/context";
@@ -18,7 +18,7 @@ const initialState = {
   totalValueLocked: 0,
   withdrawn: 0,
   investors: 0,
-  APY: 0,
+  APR: 0,
 };
 
 export default function Overview() {
@@ -29,14 +29,14 @@ export default function Overview() {
 
   const { shouldRefresh } = DappContextConsumer();
 
-  const [{ APY, totalValueLocked, withdrawn, investors }, dispatch] =
+  const [{ APR, totalValueLocked, withdrawn, investors }, dispatch] =
     useReducer((state, payload) => ({ ...state, ...payload }), initialState);
 
   const loadWalletData = async () => {
     try {
-      const APY = await getWalletAPY(account, ethersProvider);
+      const APR = await getWalletAPR(account, ethersProvider);
       dispatch({
-        APY,
+        APR,
       });
     } catch (err) {}
   };
@@ -114,11 +114,11 @@ export default function Overview() {
         </div>
         <div className="overview-item">
           <h5>Daily ROI</h5>
-          <p>{firstNPostiveNumbersAfterDecimal(APY / 365, 2)}%</p>
+          <p>{firstNPostiveNumbersAfterDecimal(APR, 2)}%</p>
         </div>
         <div className="overview-item">
           <h5>Your APY</h5>
-          <p> {firstNPostiveNumbersAfterDecimal(APY, 2)}%</p>
+          <p> {firstNPostiveNumbersAfterDecimal(APR / 365, 2)}%</p>
         </div>
       </div>
     </Container>
