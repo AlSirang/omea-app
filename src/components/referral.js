@@ -78,7 +78,7 @@ export default function Referral() {
             </div>
           </div>
 
-          <div className="refferal-button">
+          <div className="refferal-button text-center">
             <button onClick={onCopyLink} className="btn btn-primary">
               <strong>Copy link</strong>
             </button>
