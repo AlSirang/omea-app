@@ -143,10 +143,10 @@ function LiveTradeTable() {
           <tfoot>
             <tr>
               <td colSpan="9" className="border-b-none text-center pb-0">
-                <Pagination className="justify-content-center mt-3">
+                <Pagination className="justify-content-center mt-5 mb-0">
                   <Pagination.First onClick={onPrevious} />
                   <Pagination.Item disabled>{currentPage + 1}</Pagination.Item>
-                  <Pagination.Ellipsis />
+                  <Pagination.Ellipsis disabled />
                   <Pagination.Item disabled>{totalPages + 1}</Pagination.Item>
                   <Pagination.Last onClick={onNext} />
                 </Pagination>
