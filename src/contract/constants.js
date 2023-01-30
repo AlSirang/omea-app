@@ -18,7 +18,7 @@ export const contractsInfo = {
   // testnet contracts info
   "0x61": {
     omea: {
-      CONTRACT_ADDRESS: "0xa16F567bb36218c324efA58A90e5c02aA3349786",
+      CONTRACT_ADDRESS: "0x974D8d7802485029416997B880a2596005CDAc5C",
       CONTRACT_ABI: OMEA_ABI,
     },
 

@@ -21,6 +21,12 @@
         "internalType": "uint256",
         "name": "id",
         "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "investor",
+        "type": "address"
       }
     ],
     "name": "AddBonus",
@@ -36,7 +42,7 @@
         "type": "uint256"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "address",
         "name": "investor",
         "type": "address"
@@ -348,7 +354,7 @@
           { "internalType": "uint256", "name": "amount", "type": "uint256" },
           { "internalType": "uint256", "name": "payAmount", "type": "uint256" }
         ],
-        "internalType": "struct OmeaApp.BonusSigData",
+        "internalType": "struct Omea.BonusSigData",
         "name": "bonus",
         "type": "tuple"
       },
@@ -358,7 +364,7 @@
           { "internalType": "bytes32", "name": "r", "type": "bytes32" },
           { "internalType": "bytes32", "name": "s", "type": "bytes32" }
         ],
-        "internalType": "struct OmeaApp.Sig",
+        "internalType": "struct Omea.Sig",
         "name": "sig",
         "type": "tuple"
       }
