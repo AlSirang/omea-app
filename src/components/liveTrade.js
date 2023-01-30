@@ -1,39 +1,104 @@
-import { useEffect, useReducer } from "react";
-import { Container } from "react-bootstrap";
+import { useEffect, useReducer, useRef } from "react";
+import { Container, Pagination } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Papa from "papaparse";
 import { firstNPostiveNumbersAfterDecimal } from "src/utils/constants";
+import LineOfDots from "./lineOfDots";
 
 import "src/styles/livetrade.css";
-import LineOfDots from "./lineOfDots";
+
+const PAGE_HEIGHT = 10;
 
 const initialState = {
   isDataLoading: false,
   tradesInfo: [],
+  tradesInfoPerPage: [],
+  totalPages: 0,
+  currentPage: 0,
 };
 function LiveTradeTable() {
-  const [{ tradesInfo, isDataLoading }, dispatch] = useReducer(
-    (state, payload) => ({ ...state, ...payload }),
-    initialState
-  );
-  useEffect(() => {
+  const isInitialChunkLoaded = useRef(false);
+  const [
+    { tradesInfo, tradesInfoPerPage, totalPages, currentPage, isDataLoading },
+    dispatch,
+  ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
+
+  // pagination previous
+  const onPrevious = () => {
+    const newPage = currentPage - 1;
+
+    if (newPage < 0) return;
+
+    const pageTrades = tradesInfo.slice(
+      newPage * PAGE_HEIGHT,
+      newPage + PAGE_HEIGHT * 2
+    );
+
+    dispatch({
+      tradesInfoPerPage: pageTrades,
+      currentPage: newPage,
+    });
+  };
+
+  // pagination next
+  const onNext = () => {
+    const newPage = currentPage + 1;
+
+    if (newPage > totalPages) return;
+
+    const pageTrades = tradesInfo.slice(
+      newPage * PAGE_HEIGHT,
+      newPage * (PAGE_HEIGHT * 2)
+    );
+
+    dispatch({
+      tradesInfoPerPage: pageTrades,
+      currentPage: newPage,
+    });
+  };
+
+  const loadTradesInfo = () => {
     dispatch({ isDataLoading: true });
+
     Papa.parse(
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vT11iCZjV8NvQUKPcmcwY723dvls8nJK29YTdGGIRvtlo2M-kR_-2ZiiOdJPIdjlAwZpKsfiKqA50-X/pub?output=csv",
 
       {
         download: true,
         header: true,
-        complete: (results) => {
-          dispatch({ tradesInfo: results.data });
+
+        chunk: (results) => {
+          isInitialChunkLoaded.current = true;
+          const payload = [...tradesInfo, ...results.data];
+
+          const totalPages = Math.floor(payload.length / PAGE_HEIGHT);
+
+          dispatch({ tradesInfo: payload, totalPages });
           dispatch({ isDataLoading: false });
         },
+
         error: (err) => {
           dispatch({ isDataLoading: false });
         },
       }
     );
-  }, []);
+  };
+
+  const loadInitalData = () => {
+    if (tradesInfoPerPage.length) return;
+
+    const _tradesInfoPerPage = tradesInfo.slice(
+      currentPage,
+      (currentPage + 1) * PAGE_HEIGHT
+    );
+
+    dispatch({ tradesInfoPerPage: _tradesInfoPerPage });
+  };
+  useEffect(() => {
+    !isInitialChunkLoaded.current && loadTradesInfo();
+
+    loadInitalData();
+  }, [tradesInfo.length]);
 
   return (
     <Container className="main-container d-md-block d-none">
@@ -54,7 +119,7 @@ function LiveTradeTable() {
             </tr>
           </thead>
           <tbody>
-            {tradesInfo.map((props, index) => (
+            {tradesInfoPerPage.map((props, index) => (
               <TableRow {...props} key={index} />
             ))}
             {!isDataLoading && !tradesInfo.length && (
@@ -74,6 +139,20 @@ function LiveTradeTable() {
               </tr>
             )}
           </tbody>
+
+          <tfoot>
+            <tr>
+              <td colSpan="9" className="border-b-none text-center pb-0">
+                <Pagination className="justify-content-center mt-3">
+                  <Pagination.First onClick={onPrevious} />
+                  <Pagination.Item disabled>{currentPage + 1}</Pagination.Item>
+                  <Pagination.Ellipsis />
+                  <Pagination.Item disabled>{totalPages + 1}</Pagination.Item>
+                  <Pagination.Last onClick={onNext} />
+                </Pagination>
+              </td>
+            </tr>
+          </tfoot>
         </Table>
       </div>
     </Container>

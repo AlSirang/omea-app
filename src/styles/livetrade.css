@@ -55,3 +55,22 @@
 .border-b-none {
   border-bottom: none;
 }
+
+ul.pagination {
+  --bs-pagination-border-width: 0;
+  --bs-pagination-font-size: 1.03rem;
+
+  --bs-pagination-bg: green;
+
+  --bs-pagination-border-color: var(--primary-dark);
+  --bs-pagination-hover-color: var(--primary-dark);
+  --bs-pagination-focus-bg: var(--primary-dark);
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0);
+  --bs-pagination-color: red;
+  --bs-pagination-hover-bg: green;
+  --bs-pagination-hover-border-color: green;
+  --bs-pagination-disabled-border-color: green;
+  --bs-pagination-disabled-bg: rgb(0, 13, 128);
+  --bs-pagination-disabled-color: #fff;
+  --bs-pagination-active-color: rgb(206, 117, 0);
+}
