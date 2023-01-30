@@ -8,12 +8,7 @@ export default function Bonusvouchers() {
       <div className="card-main deposit-card">
         <div className="deposit-card-head">
           <div className="deposit-date">
-            <p>2022-12-09 </p>
-            <p> 10:40:08 </p>
-          </div>
-          <div className="deposit-amount">
-            <p>12.00 </p>
-            <p> BUSD </p>
+            <p>Bonus Id: </p>
           </div>
         </div>
         {/* d  h m s */}
@@ -37,9 +32,12 @@ export default function Bonusvouchers() {
             </div>
           </div>
 
-          <button className="btn btn-secondary btn-withdraw claim-button">
+          <div className="deposit-amount">
+            <p className="mb-0">12.00 BUSD</p>
+          </div>
+          {/* <button className="btn btn-secondary btn-withdraw claim-button">
             <strong>Claim</strong>
-          </button>
+          </button> */}
         </div>
         <hr className="deposit-hr" />
       </div>
