@@ -54,12 +54,12 @@ function LiveTradeTable() {
             </tr>
           </thead>
           <tbody>
-            {tradesInfo.map((props) => (
-              <TableRow {...props} />
+            {tradesInfo.map((props, index) => (
+              <TableRow {...props} key={index} />
             ))}
             {!isDataLoading && !tradesInfo.length && (
               <tr>
-                <td colspan="9" className="border-b-none">
+                <td colSpan="9" className="border-b-none">
                   <h5 className="text-center text-light mt-3">
                     No Trades found
                   </h5>
@@ -68,7 +68,7 @@ function LiveTradeTable() {
             )}
             {isDataLoading && (
               <tr>
-                <td colspan="9" className="border-b-none">
+                <td colSpan="9" className="border-b-none">
                   <LineOfDots />
                 </td>
               </tr>
