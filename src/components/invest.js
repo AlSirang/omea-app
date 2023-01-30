@@ -263,7 +263,9 @@ export default function InvestSection() {
           <div className="invest-gird-inner">
             <h5 className="invest-title">BUSD per Hour</h5>
             <p className="invest-para">
-              {firstNPostiveNumbersAfterDecimal((totalLocked / 100) * APR) / 24}
+              {firstNPostiveNumbersAfterDecimal(
+                ((totalLocked / 100) * APR) / 24
+              )}
             </p>
           </div>
         </div>
