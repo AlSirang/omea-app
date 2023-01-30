@@ -5,8 +5,12 @@
 .main-container h4 {
   text-transform: capitalize;
 }
-.card-main-inner {
-  padding: 10px 30px;
+.table-responsive {
+  padding: 40px 35px 20px;
+  background: #000000;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%),
+    inset 0px 0px 83px 6px rgb(255 255 255 / 13%);
+  border-radius: 34px;
 }
 
 .table-head {
@@ -18,22 +22,36 @@
 .table-head td {
   border-bottom: none;
 }
-.table-btn-yellow {
-  padding: 0px 25px !important;
-  border-radius: 50px !important;
-}
-.table-btn-green {
-  padding: 0px 30px !important;
-  border-radius: 50px !important;
-}
-.table-btn-red {
-  padding: 0px 35px !important;
-  border-radius: 50px !important;
+.table-btn {
+  padding: 1px 20px;
+  border-radius: 50px;
+  font-size: 1rem;
+  text-transform: capitalize;
 }
 
-.end-td-green-data {
+.status-won {
+  background-color: #a9f9a8;
+  color: var(--primary-dark);
+}
+.status-lost {
+  background-color: #f80000;
+  color: #fff;
+}
+.status-active {
+  background-color: var(--primary-color);
+  color: var(--primary-dark);
+}
+
+.won-pnl {
   color: #a9f9a8;
 }
-.end-td-red-data {
+.lost-pnl {
   color: #f80000;
+}
+.active-pnl {
+  color: #fff;
+}
+
+.border-b-none {
+  border-bottom: none;
 }
