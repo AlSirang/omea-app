@@ -4,7 +4,14 @@
   max-height: 700px;
   overflow-y: scroll;
 }
+.deposit-card::-webkit-scrollbar {
+  width: 0px;
+}
 
+/* Track */
+.deposit::-webkit-scrollbar-track {
+  background: transparent;
+}
 .deposit-card-head {
   display: flex;
   justify-content: space-between;
