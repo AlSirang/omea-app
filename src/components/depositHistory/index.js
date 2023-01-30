@@ -5,6 +5,7 @@ import { WalletUserContext } from "src/context";
 import { getOmeaContractInstance, getRpcProvider } from "src/utils/constants";
 import { parseDepositHistory } from "src/utils/helpers";
 import "src/styles/dapp/depositHistory.css";
+import { DappContextConsumer } from "pages/dapp/context";
 
 const initialState = {
   isDataLoading: false,
@@ -20,6 +21,8 @@ export default function DepositHistory() {
   const {
     contextState: { account, ethersProvider },
   } = WalletUserContext();
+
+  const { shouldRefresh } = DappContextConsumer();
 
   const loadDepositHistory = async () => {
     try {
@@ -58,7 +61,7 @@ export default function DepositHistory() {
     account && loadDepositHistory();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+  }, [account, shouldRefresh]);
   return (
     <div>
       <h4 className="heading">Deposit History</h4>
