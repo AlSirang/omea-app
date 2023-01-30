@@ -98,15 +98,15 @@ const TableRow = ({
       <tr className="table-head">
         <td>{Date}</td>
         <td>{Pair}</td>
-        <td>{firstNPostiveNumbersAfterDecimal(Amount, 2)}</td>
+        <td>{firstNPostiveNumbersAfterDecimal(Amount)}</td>
         <td>
           <span className={`mb-0 table-btn status-${Status.toLowerCase()}`}>
             {Status.toLowerCase()}
           </span>
         </td>
         <td>{Position}</td>
-        <td>{firstNPostiveNumbersAfterDecimal(Entry, 2)}</td>
-        <td>{firstNPostiveNumbersAfterDecimal(Exit, 2)}</td>
+        <td>{firstNPostiveNumbersAfterDecimal(Entry)}</td>
+        <td>{firstNPostiveNumbersAfterDecimal(Exit)}</td>
 
         <td>{Leverage}</td>
         <td className={`${Status.toLowerCase()}-pnl`}>{PNL}</td>

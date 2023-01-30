@@ -105,11 +105,11 @@ export default function Overview() {
       <div className="card-main overview-section">
         <div className="overview-item">
           <h5>TVL</h5>
-          <p>{firstNPostiveNumbersAfterDecimal(totalValueLocked, 2)}</p>
+          <p>{firstNPostiveNumbersAfterDecimal(totalValueLocked)}</p>
         </div>
         <div className="overview-item">
           <h5>Withdrawn</h5>
-          <p>{firstNPostiveNumbersAfterDecimal(withdrawn, 2)}</p>
+          <p>{firstNPostiveNumbersAfterDecimal(withdrawn)}</p>
         </div>
         <div className="overview-item">
           <h5>Investors</h5>
@@ -117,11 +117,11 @@ export default function Overview() {
         </div>
         <div className="overview-item">
           <h5>Daily ROI</h5>
-          <p>{firstNPostiveNumbersAfterDecimal(APR, 2)}%</p>
+          <p>{firstNPostiveNumbersAfterDecimal(APR)}%</p>
         </div>
         <div className="overview-item">
           <h5>Your APY</h5>
-          <p> {firstNPostiveNumbersAfterDecimal(APR * 365, 2)}%</p>
+          <p> {firstNPostiveNumbersAfterDecimal(APR * 365)}%</p>
         </div>
       </div>
     </Container>

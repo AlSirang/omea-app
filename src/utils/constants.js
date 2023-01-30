@@ -21,7 +21,7 @@ export const getBusdContractInstance = (provider) => {
   return new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
 };
 
-export const firstNPostiveNumbersAfterDecimal = (number, n = 4) => {
+export const firstNPostiveNumbersAfterDecimal = (number, n = 2) => {
   const [num, decimals] = number.toString().split(".");
   let finalNumber = num;
 
@@ -30,7 +30,7 @@ export const firstNPostiveNumbersAfterDecimal = (number, n = 4) => {
 
   if (decimals && decimals.length)
     for (let i = 0; i < decimals.length; i++) {
-      if (postiveDecimals === n) break;
+      if (postiveDecimals >= n) break;
       if (decimals[i] > 0) postiveDecimals += 1;
       newDecimals.push(decimals[i]);
     }

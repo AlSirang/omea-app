@@ -213,7 +213,7 @@ export default function InvestSection() {
             <div>
               <h5 className="invest-title">Staked</h5>
               <p className="invest-para">
-                {firstNPostiveNumbersAfterDecimal(totalLocked, 2)}
+                {firstNPostiveNumbersAfterDecimal(totalLocked)}
               </p>
             </div>
           </div>
@@ -245,13 +245,13 @@ export default function InvestSection() {
           <div className="invest-gird-inner">
             <h5 className="invest-title">Claimable reward</h5>
             <p className="invest-para">
-              {firstNPostiveNumbersAfterDecimal(claimableAmount, 2)}
+              {firstNPostiveNumbersAfterDecimal(claimableAmount)}
             </p>
           </div>
           <div className="invest-gird-inner">
             <h5 className="invest-title">Total reward</h5>
             <p className="invest-para">
-              {firstNPostiveNumbersAfterDecimal(claimedAmount, 2)}
+              {firstNPostiveNumbersAfterDecimal(claimedAmount)}
             </p>
           </div>
           <div className="invest-gird-inner">

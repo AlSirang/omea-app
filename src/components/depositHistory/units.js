@@ -16,7 +16,7 @@ export const RenderDepositHistory = ({
           <p>{timeConverter(depositAt)}</p>
         </div>
         <div className="deposit-amount">
-          <p>{firstNPostiveNumbersAfterDecimal(depositAmount, 2)} </p>
+          <p>{firstNPostiveNumbersAfterDecimal(depositAmount)} </p>
           <p> BUSD </p>
         </div>
       </div>
