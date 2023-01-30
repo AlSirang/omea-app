@@ -98,6 +98,8 @@ function LiveTradeTable() {
     !isInitialChunkLoaded.current && loadTradesInfo();
 
     loadInitalData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tradesInfo.length]);
 
   return (

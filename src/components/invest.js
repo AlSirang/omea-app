@@ -208,12 +208,12 @@ export default function InvestSection() {
           <div className="invest-info">
             <div>
               <h5 className="invest-title">Balance</h5>
-              <p className="invest-para">{walletBalance}</p>
+              <p className="invest-para">{walletBalance} BUSD</p>
             </div>
             <div>
               <h5 className="invest-title">Staked</h5>
               <p className="invest-para">
-                {firstNPostiveNumbersAfterDecimal(totalLocked)}
+                {firstNPostiveNumbersAfterDecimal(totalLocked)} BUSD
               </p>
             </div>
           </div>
