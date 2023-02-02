@@ -7,11 +7,6 @@ import { getLevelInfo } from "src/utils/helpers";
 
 const initialState = {
   isDataLoading: false,
-  totalLocked: 0,
-  startTime: 0,
-  lastCalculationDate: 0,
-  claimableAmount: 0,
-  claimedAmount: 0,
   referAmount: 0,
   referCount: 0,
 };

@@ -53,7 +53,7 @@ export const getLevelInfo = (progress) => {
       now: progress,
       level: 1,
       max: 11,
-      bonus: 8,
+      bonus: progress > 0 ? 8 : 0,
     };
   if (progress <= 30)
     return {
