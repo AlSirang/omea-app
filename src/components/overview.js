@@ -15,10 +15,10 @@ import "src/styles/dapp/overview.css";
 
 const initialState = {
   isDataLoading: false,
+  totalInvestors: 0,
   totalValueLocked: 0,
-  withdrawn: 0,
-  investors: 0,
-  APR: 0,
+  totalRewardsDistributed: 0,
+  HPR: 0,
 };
 
 export default function Overview() {
@@ -30,15 +30,15 @@ export default function Overview() {
   const { shouldRefresh } = DappContextConsumer();
 
   const [
-    { APR, totalValueLocked, withdrawn, investors, isDataLoading },
+    { HPR, totalInvestors, totalValueLocked, totalRewardsDistributed },
     dispatch,
   ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
 
   const loadWalletData = async () => {
     try {
-      const APR = await getWalletAPR(account, ethersProvider);
+      const HPR = await getWalletAPR(account, ethersProvider);
       dispatch({
-        APR,
+        HPR,
       });
     } catch (err) {}
   };
@@ -60,18 +60,8 @@ export default function Overview() {
           abi: CONTRACT_ABI,
           calls: [
             {
-              reference: "totalInvestors",
-              methodName: "totalInvestors",
-              methodParameters: [],
-            },
-            {
-              reference: "getTotalRewards",
-              methodName: "getTotalRewards",
-              methodParameters: [],
-            },
-            {
-              reference: "getBalance",
-              methodName: "getBalance",
+              reference: "getInvestmentInfo",
+              methodName: "getInvestmentInfo",
               methodParameters: [],
             },
           ],
@@ -79,6 +69,7 @@ export default function Overview() {
       ];
 
       const { results: response } = await multicall.call(contractCallContext);
+
       const results = parseOverviewMulticallResponse(response);
 
       dispatch({ ...results });
@@ -109,19 +100,19 @@ export default function Overview() {
         </div>
         <div className="overview-item">
           <h5>Withdrawn</h5>
-          <p>{firstNPostiveNumbersAfterDecimal(withdrawn)}</p>
+          <p>{firstNPostiveNumbersAfterDecimal(totalRewardsDistributed)}</p>
         </div>
         <div className="overview-item">
           <h5>Investors</h5>
-          <p>{investors}</p>
+          <p>{totalInvestors}</p>
         </div>
         <div className="overview-item">
           <h5>Daily ROI</h5>
-          <p>{firstNPostiveNumbersAfterDecimal(APR)}%</p>
+          <p>{firstNPostiveNumbersAfterDecimal(HPR * 24)}%</p>
         </div>
         <div className="overview-item">
           <h5>Your APY</h5>
-          <p> {firstNPostiveNumbersAfterDecimal(APR * 365)}%</p>
+          <p> {firstNPostiveNumbersAfterDecimal(HPR * 365)}%</p>
         </div>
       </div>
     </Container>

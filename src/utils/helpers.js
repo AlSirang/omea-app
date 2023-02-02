@@ -1,26 +1,24 @@
 import { ethers } from "ethers";
 
 export const parseOverviewMulticallResponse = (response) => {
-  const { callsReturnContext } = response.omea;
+  const { returnValues } = response.omea.callsReturnContext[0];
+
   return {
-    investors: parseInt(callsReturnContext[0].returnValues[0].hex),
-    withdrawn: ethers.utils.formatEther(callsReturnContext[1].returnValues[0]),
-    totalValueLocked: ethers.utils.formatEther(
-      callsReturnContext[2].returnValues[0]
-    ),
+    totalInvestors: parseInt(returnValues[0].hex),
+    totalValueLocked: ethers.utils.formatEther(returnValues[1]),
+    totalRewardsDistributed: ethers.utils.formatEther(returnValues[2]),
   };
 };
 
 export const parseReferralMulticallResponse = (response) => {
   const values = response.omea.callsReturnContext[0].returnValues;
+
   return {
-    startTime: parseInt(values[3].hex),
-    lastCalculationDate: parseInt(values[4].hex),
-    referCount: parseInt(values[8].hex),
     totalLocked: ethers.utils.formatEther(values[2]),
-    claimableAmount: ethers.utils.formatEther(values[5]),
-    claimedAmount: ethers.utils.formatEther(values[6]),
-    referAmount: ethers.utils.formatEther(values[7]),
+    claimableAmount: ethers.utils.formatEther(values[4]),
+    claimedAmount: ethers.utils.formatEther(values[5]),
+    referAmount: ethers.utils.formatEther(values[6]),
+    referCount: parseInt(values[7].hex),
   };
 };
 
