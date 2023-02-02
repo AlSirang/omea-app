@@ -80,3 +80,10 @@ export const getBalance = async (account) => {
     await busdContractInstance.balanceOf(account)
   );
 };
+
+export const parseBonusesInfo = (info = []) => {
+  return info.map(({ amount, createdDate }) => ({
+    amount: ethers.utils.formatEther(amount),
+    createdDate: createdDate.toString(),
+  }));
+};
