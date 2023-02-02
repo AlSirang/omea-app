@@ -35,15 +35,16 @@ export const getInvestorInfo = async (account) => {
 
 export const getWalletAPR = async (account, ethersProvider) => {
   try {
-    const { totalLocked: _totalLocked } = await getInvestorInfo(account);
-    const totalLocked = ethers.utils.parseEther(_totalLocked.toString());
     const multicall = new Multicall({
       ethersProvider: ethersProvider || getRpcProvider(),
       tryAggregate: true,
     });
-
     const { CONTRACT_ADDRESS, CONTRACT_ABI } =
       contractsInfo[ACCEPTED_CHAIN_ID].omea;
+
+    const { totalLocked } = await getInvestorInfo(account);
+    const totalLockedWei = ethers.utils.parseEther(totalLocked);
+
     const contractCallContext = [
       {
         reference: "omea",
@@ -51,17 +52,16 @@ export const getWalletAPR = async (account, ethersProvider) => {
         abi: CONTRACT_ABI,
         calls: [
           {
-            reference: "getApr",
-            methodName: "getApr",
-            methodParameters: [totalLocked],
+            reference: "getHPR",
+            methodName: "getHPR",
+            methodParameters: [totalLockedWei],
           },
         ],
       },
     ];
     const { results: response } = await multicall.call(contractCallContext);
     const { callsReturnContext } = response.omea;
-
-    return parseInt(callsReturnContext[0].returnValues[0].hex) / 100;
+    return parseInt(callsReturnContext[0].returnValues[0]) / 100;
   } catch (err) {
     return 0;
   }
