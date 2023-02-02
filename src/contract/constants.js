@@ -18,7 +18,7 @@ export const contractsInfo = {
   // testnet contracts info
   "0x61": {
     omea: {
-      CONTRACT_ADDRESS: "0x974D8d7802485029416997B880a2596005CDAc5C",
+      CONTRACT_ADDRESS: "0x6193A6fd1Fab85252F89fa9cB0fcBcD69E15872c",
       CONTRACT_ABI: OMEA_ABI,
     },
 
@@ -27,39 +27,16 @@ export const contractsInfo = {
       CONTRACT_ABI: BUSD_ABI,
     },
   },
+
+  "0x5": {
+    omea: {
+      CONTRACT_ADDRESS: "0xb58dedf26d3C75709bd090a0C913ffBcc766C20E",
+      CONTRACT_ABI: OMEA_ABI,
+    },
+
+    busd: {
+      CONTRACT_ADDRESS: "0x9E90040b6720f9074eD550FF09b6B0887674857d",
+      CONTRACT_ABI: BUSD_ABI,
+    },
+  },
 };
-
-/* Write Functions
-- claimAllReward - claims all reward for user
-- Deposit = deposit
-- launchContract = starts the contract
-- RenounceOwnership = contract loses owners
-- setBonus = Only Owner can set a numeric Bonus to a user - Bonus itself is non withdrawable only generates reward
-- setSigner = sets a signer for bonuses
--WithdrawCapital = unstacking locked investment after period is over to withdraw principal
-*/
-
-/*
-- Read functions
-- APR Reads give you the fixed daily % of roi per cluster (cluster is depended on deposit sum of user)
-- Apr 1
-- Ap2
-- Ap3
-- Apr4
-- Apr5
-- Read current APR / ROI% of user by calling the getApr function
-- Get Balance - gets balance of BUSD in user wallet
-- Get investor referrals - gets number of refferals user has
-- Get OwnedDeposits - Returns users own deposits
-- Total invests - returns total amount invested
-- Total rewards - returns total amount of rewards disturbuited
-- Investors - returns number of investors
-- Launched - contract started Y/N
-- Owner - returns owner of contract
-- Principal fee - returns the 1% fee on withdrawing initial principal
-- ReferrerRewards (1-3) - return the reward % of the referrer level user is on
-- RewardPeriod- returns the reward period
-- GetTotalInvested = total invested
-- GetTotalReward = total rewards
-- Withdraw period = returns time till unlocked principal
-*/

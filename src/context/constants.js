@@ -1,5 +1,5 @@
 // export const ACCEPTED_CHAIN_ID = "0x38"; // for mainnet
-export const ACCEPTED_CHAIN_ID = "0x61"; // for testnet
+export const ACCEPTED_CHAIN_ID = "0x5"; // for testnet
 
 export const TX_STATUS = {
   PENDING: "PENDING",
@@ -44,6 +44,15 @@ export const chainInfo = {
       },
       rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
       blockExplorerUrls: ["https://testnet.bscscan.com"],
+    },
+  },
+
+  "0x5": {
+    rpc: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+    blockExplorer: "https://goerli.etherscan.io",
+    info: {
+      chainId: 5,
+      network: "binancetest",
     },
   },
 };
