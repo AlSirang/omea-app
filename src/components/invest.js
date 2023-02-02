@@ -3,7 +3,7 @@ import { WalletUserContext } from "src/context";
 import {
   getBalance,
   getInvestorInfo,
-  getWalletAPR,
+  getWalletHPR,
 } from "src/utils/web3.helpers";
 import {
   firstNPostiveNumbersAfterDecimal,
@@ -28,14 +28,12 @@ import "src/styles/dapp/invest.css";
 const initialState = {
   isDataLoading: false,
   totalLocked: 0,
-  startTime: 0,
-  lastCalculationDate: 0,
   claimableAmount: 0,
   claimedAmount: 0,
   walletBalance: 0,
   modalText: null,
   txStatus: null,
-  APR: 0,
+  HPR: 0,
 };
 
 export default function InvestSection() {
@@ -47,7 +45,7 @@ export default function InvestSection() {
       walletBalance,
       modalText,
       txStatus,
-      APR,
+      HPR,
     },
     dispatch,
   ] = useReducer((state, payload) => ({ ...state, ...payload }), initialState);
@@ -62,13 +60,13 @@ export default function InvestSection() {
     try {
       dispatch({ isDataLoading: true });
 
-      const [walletBalance, results, APR] = await Promise.all([
+      const [walletBalance, results, HPR] = await Promise.all([
         getBalance(account),
         getInvestorInfo(account),
-        getWalletAPR(account),
+        getWalletHPR(account),
       ]);
 
-      dispatch({ ...results, walletBalance, APR });
+      dispatch({ ...results, walletBalance, HPR });
     } catch (err) {}
 
     dispatch({ isDataLoading: false });
@@ -213,7 +211,10 @@ export default function InvestSection() {
             <div>
               <h5 className="invest-title">Staked</h5>
               <p className="invest-para">
-                {firstNPostiveNumbersAfterDecimal(totalLocked)} BUSD
+                {firstNPostiveNumbersAfterDecimal(
+                  ethers.utils.formatEther(totalLocked.toString())
+                )}
+                BUSD
               </p>
             </div>
           </div>
@@ -257,14 +258,18 @@ export default function InvestSection() {
           <div className="invest-gird-inner">
             <h5 className="invest-title">BUSD per Day</h5>
             <p className="invest-para">
-              {firstNPostiveNumbersAfterDecimal((totalLocked / 100) * APR)}
+              {firstNPostiveNumbersAfterDecimal(
+                ethers.utils.formatEther(
+                  ((totalLocked * HPR) / 100).toString()
+                ) * 24
+              )}
             </p>
           </div>
           <div className="invest-gird-inner">
             <h5 className="invest-title">BUSD per Hour</h5>
             <p className="invest-para">
               {firstNPostiveNumbersAfterDecimal(
-                ((totalLocked / 100) * APR) / 24
+                ethers.utils.formatEther(((totalLocked * HPR) / 100).toString())
               )}
             </p>
           </div>

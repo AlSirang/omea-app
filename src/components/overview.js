@@ -7,7 +7,7 @@ import {
 } from "src/utils/constants";
 import { contractsInfo } from "src/contract/constants";
 import { parseOverviewMulticallResponse } from "src/utils/helpers";
-import { getWalletAPR } from "src/utils/web3.helpers";
+import { getWalletHPR } from "src/utils/web3.helpers";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
 import { WalletUserContext } from "src/context";
 import { DappContextConsumer } from "pages/dapp/context";
@@ -36,7 +36,7 @@ export default function Overview() {
 
   const loadWalletData = async () => {
     try {
-      const HPR = await getWalletAPR(account, ethersProvider);
+      const HPR = await getWalletHPR(account, ethersProvider);
       dispatch({
         HPR,
       });

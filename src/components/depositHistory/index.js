@@ -31,22 +31,8 @@ export default function DepositHistory() {
         ethersProvider || getRpcProvider()
       );
 
-      let depositIds = contractInstance.getOwnedDeposits(account);
-      let withdrawPeriod = contractInstance.withdrawPeriod();
-
-      [depositIds, withdrawPeriod] = await Promise.all([
-        depositIds,
-        withdrawPeriod,
-      ]);
-
-      const depostInfoPromise = depositIds.map((depostId) =>
-        contractInstance.depositState(depostId)
-      );
-
-      const depostInfo = parseDepositHistory(
-        await Promise.all(depostInfoPromise),
-        parseInt(withdrawPeriod._hex)
-      );
+      const depositsOf = await contractInstance.depositsOf(account);
+      const depostInfo = parseDepositHistory(depositsOf);
 
       dispatch({
         depostInfo,

@@ -2,21 +2,23 @@ import { firstNPostiveNumbersAfterDecimal } from "src/utils/constants";
 import { timeConverter } from "src/utils/dateTimeHelper";
 import Countdown from "react-countdown";
 
+const _30_DAYS = 2592000;
+
 export const RenderDepositHistory = ({
-  depositAmount,
-  depositAt,
+  index,
+  amount,
+  lockPeriod,
   isActive,
-  withdrawPeriod,
 }) => {
-  withdrawPeriod *= 1000; // convert to milliseconds
+  const lockPeriodInMiliseconds = lockPeriod * 1000;
   return (
     <>
       <div className="deposit-card-head">
         <div className="deposit-date">
-          <p>{timeConverter(depositAt)}</p>
+          <p>{timeConverter(lockPeriod - _30_DAYS)}</p>
         </div>
         <div className="deposit-amount">
-          <p>{firstNPostiveNumbersAfterDecimal(depositAmount)} </p>
+          <p>{firstNPostiveNumbersAfterDecimal(amount)} </p>
           <p> BUSD </p>
         </div>
       </div>
@@ -24,14 +26,14 @@ export const RenderDepositHistory = ({
         <div className="withdraw-duration">
           <div className="duration-item">
             <p>Withdraw Period</p>
-            <Countdown date={withdrawPeriod} />
+            <Countdown date={lockPeriodInMiliseconds} />
           </div>
         </div>
 
         {isActive && (
           <button
             className="btn btn-secondary btn-withdraw"
-            disabled={!(withdrawPeriod < Date.now())}
+            disabled={!(lockPeriodInMiliseconds < Date.now())}
           >
             <strong>Withdraw</strong>
           </button>

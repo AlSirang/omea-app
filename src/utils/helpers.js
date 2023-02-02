@@ -12,10 +12,11 @@ export const parseOverviewMulticallResponse = (response) => {
 
 export const parseReferralMulticallResponse = (response) => {
   const values = response.omea.callsReturnContext[0].returnValues;
+  const claimableAmount = response.omea.callsReturnContext[1].returnValues;
 
   return {
-    totalLocked: ethers.utils.formatEther(values[2]),
-    claimableAmount: ethers.utils.formatEther(values[4]),
+    totalLocked: parseInt(values[2].hex),
+    claimableAmount: ethers.utils.formatEther(claimableAmount[0]),
     claimedAmount: ethers.utils.formatEther(values[5]),
     referAmount: ethers.utils.formatEther(values[6]),
     referCount: parseInt(values[7].hex),
@@ -35,18 +36,13 @@ export const getReferralFromURL = () => {
   return params.get("referral");
 };
 
-export const parseDepositHistory = (
-  response = [],
-  withdrawPeriod = 2592000
-) => {
-  return response.map(({ depositAmount, depositAt, state }) => {
-    const _depositAt = parseInt(depositAt._hex);
-
+export const parseDepositHistory = (response = []) => {
+  return response.map(({ amount, index, lockPeriod, status }) => {
     return {
-      depositAmount: ethers.utils.formatEther(depositAmount),
-      withdrawPeriod: _depositAt + withdrawPeriod,
-      depositAt: _depositAt,
-      isActive: state,
+      index: index.toString(),
+      amount: ethers.utils.formatEther(amount),
+      lockPeriod: lockPeriod.toString(),
+      isActive: status,
     };
   });
 };
