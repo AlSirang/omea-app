@@ -6,7 +6,7 @@ import {
   getRpcProvider,
 } from "src/utils/constants";
 import { contractsInfo } from "src/contract/constants";
-import { parseOverviewMulticallResponse } from "src/utils/helpers";
+import { parseOverviewMulticallResponse, trueRound } from "src/utils/helpers";
 import { getWalletHPR } from "src/utils/web3.helpers";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
 import { WalletUserContext } from "src/context";
@@ -113,11 +113,21 @@ export default function Overview() {
         </div>
         <div className="overview-item">
           <h5>Daily ROI</h5>
-          <p>{firstNPostiveNumbersAfterDecimal((HPR / 100) * 24)}%</p>
+          <p>
+            {trueRound(
+              firstNPostiveNumbersAfterDecimal((HPR / 100) * 24) * 100
+            )}
+            %
+          </p>
         </div>
         <div className="overview-item">
           <h5>Your APY</h5>
-          <p> {firstNPostiveNumbersAfterDecimal((HPR / 100) * 8760)}%</p>
+          <p>
+            {trueRound(
+              firstNPostiveNumbersAfterDecimal((HPR / 100) * 8760) * 100
+            )}
+            %
+          </p>
         </div>
       </div>
     </Container>

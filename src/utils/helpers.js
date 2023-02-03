@@ -1,5 +1,12 @@
 import { ethers } from "ethers";
 
+export function trueRound(value, digits = 1) {
+  return (
+    Math.round((value * Math.pow(10, digits)).toFixed(digits - 1)) /
+    Math.pow(10, digits)
+  ).toFixed(digits);
+}
+
 export const parseOverviewMulticallResponse = (response) => {
   const { returnValues } = response.omea.callsReturnContext[0];
   const totalValueLocked = ethers.utils.formatEther(
