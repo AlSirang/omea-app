@@ -1,19 +1,39 @@
 // import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { WalletUserContext } from "src/context";
 import { shortenAddress } from "src/utils/constants";
+import { getInvestorInfo } from "src/utils/web3.helpers";
 import profileIcon from "assets/Icons/profile.svg";
 import rocketIcon from "assets/Icons/rocket.svg";
+import vipIcon from "assets/Icons/vip.svg";
 
 export const DappButton = () => {
   const { walletConnect, contextState } = WalletUserContext();
   const { account, isWalletConnected } = contextState;
 
+  const [isVIP, setIsVIP] = useState(false);
+
+  useEffect(() => {
+    account &&
+      getInvestorInfo(account)
+        .then(({ totalLocked }) => {
+          if (totalLocked / 1e18 > 5000) setIsVIP(true);
+        })
+        .catch((err) => {});
+  }, [account]);
   return (
     <>
       {isWalletConnected && (
         <span className="d-flex align-items-center gap-2">
           <p className="m-0 font-bold">{shortenAddress(account)}</p>
-          <img className="profile-icon" src={profileIcon} alt="profile icon" />
+          <span className="position-relative">
+            <img
+              className="profile-icon"
+              src={profileIcon}
+              alt="profile icon"
+            />
+            {isVIP && <img className="vip-icon" src={vipIcon} alt="vip icon" />}
+          </span>
         </span>
       )}
       {!isWalletConnected && (
