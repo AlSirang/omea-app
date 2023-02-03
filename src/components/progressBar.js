@@ -10,6 +10,7 @@ export default function ProgressBar({ now = 0, max = 10, level = 1 }) {
         className="progress-bar"
         variant="warning"
         animated
+        // eslint-disable-next-line eqeqeq
         now={now == 0 ? 1 : now}
         max={max}
         label={`${firstNPostiveNumbersAfterDecimal((now / max) * 100, 1)} %`}
