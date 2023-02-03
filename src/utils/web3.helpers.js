@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import { ACCEPTED_CHAIN_ID } from "src/context/constants";
 import { contractsInfo } from "src/contract/constants";
 import { getBusdContractInstance, getRpcProvider } from "./constants";
-import { parseReferralMulticallResponse } from "./helpers";
+import { formateBigNumber, parseReferralMulticallResponse } from "./helpers";
 
 export const getInvestorInfo = async (account) => {
   const multicall = new Multicall({
@@ -67,7 +67,7 @@ export const getWalletHPR = async (account, ethersProvider) => {
     const { results: response } = await multicall.call(contractCallContext);
     const { callsReturnContext } = response.omea;
 
-    return parseInt(callsReturnContext[0].returnValues[0]) / 100;
+    return formateBigNumber(callsReturnContext[0].returnValues[0]) / 100;
   } catch (err) {
     console.log(err);
     return 0;

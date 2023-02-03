@@ -4,7 +4,7 @@ export const parseOverviewMulticallResponse = (response) => {
   const { returnValues } = response.omea.callsReturnContext[0];
 
   return {
-    totalInvestors: parseInt(returnValues[0].hex),
+    totalInvestors: formateBigNumber(returnValues[0].hex),
     totalValueLocked: ethers.utils.formatEther(returnValues[1]),
     totalRewardsDistributed: ethers.utils.formatEther(returnValues[2]),
   };
@@ -14,13 +14,14 @@ export const parseReferralMulticallResponse = (response) => {
   const values = response.omea.callsReturnContext[0].returnValues;
   const claimableAmount = response.omea.callsReturnContext[1].returnValues;
 
+  console.log(formateBigNumber(values[2].hex));
   return {
-    totalLocked: parseInt(values[2].hex),
+    totalLocked: formateBigNumber(values[2].hex),
     claimableAmount: ethers.utils.formatEther(claimableAmount[0]),
     claimedAmount: ethers.utils.formatEther(values[5]),
     referAmount: ethers.utils.formatEther(values[6]),
-    referCount: parseInt(values[7].hex),
-    bonus: parseInt(values[8].hex),
+    referCount: formateBigNumber(values[7].hex),
+    bonus: formateBigNumber(values[8].hex),
   };
 };
 
@@ -46,6 +47,10 @@ export const parseDepositHistory = (response = []) => {
       isActive: status,
     };
   });
+};
+
+export const formateBigNumber = (bigNumber) => {
+  return parseInt(bigNumber).toLocaleString("fullwide", { useGrouping: false });
 };
 
 export const getLevelInfo = (progress) => {
