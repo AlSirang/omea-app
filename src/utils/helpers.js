@@ -20,6 +20,7 @@ export const parseReferralMulticallResponse = (response) => {
     claimedAmount: ethers.utils.formatEther(values[5]),
     referAmount: ethers.utils.formatEther(values[6]),
     referCount: parseInt(values[7].hex),
+    bonus: parseInt(values[8].hex),
   };
 };
 

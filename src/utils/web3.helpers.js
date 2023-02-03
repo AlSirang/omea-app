@@ -47,8 +47,9 @@ export const getWalletHPR = async (account, ethersProvider) => {
     const { CONTRACT_ADDRESS, CONTRACT_ABI } =
       contractsInfo[ACCEPTED_CHAIN_ID].omea;
 
-    const { totalLocked } = await getInvestorInfo(account);
+    const { totalLocked, bonus } = await getInvestorInfo(account);
 
+    const total = (totalLocked + bonus).toString();
     const contractCallContext = [
       {
         reference: "omea",
@@ -58,7 +59,7 @@ export const getWalletHPR = async (account, ethersProvider) => {
           {
             reference: "getHPR",
             methodName: "getHPR",
-            methodParameters: [totalLocked.toString()],
+            methodParameters: [total.toString()],
           },
         ],
       },
