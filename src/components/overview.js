@@ -117,7 +117,7 @@ export default function Overview() {
         </div>
         <div className="overview-item">
           <h5>Your APY</h5>
-          <p> {firstNPostiveNumbersAfterDecimal((HPR / 100) * 365)}%</p>
+          <p> {firstNPostiveNumbersAfterDecimal((HPR / 100) * 8760)}%</p>
         </div>
       </div>
     </Container>
