@@ -17,7 +17,6 @@ export const parseReferralMulticallResponse = (response) => {
   const values = response.omea.callsReturnContext[0].returnValues;
   const claimableAmount = response.omea.callsReturnContext[1].returnValues;
 
-  console.log(formateBigNumber(values[2].hex));
   return {
     totalLocked: formateBigNumber(values[2].hex),
     claimableAmount: ethers.utils.formatEther(claimableAmount[0]),

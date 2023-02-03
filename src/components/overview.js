@@ -113,11 +113,11 @@ export default function Overview() {
         </div>
         <div className="overview-item">
           <h5>Daily ROI</h5>
-          <p>{firstNPostiveNumbersAfterDecimal(HPR * 24)}%</p>
+          <p>{firstNPostiveNumbersAfterDecimal((HPR / 100) * 24)}%</p>
         </div>
         <div className="overview-item">
           <h5>Your APY</h5>
-          <p> {firstNPostiveNumbersAfterDecimal(HPR * 365)}%</p>
+          <p> {firstNPostiveNumbersAfterDecimal((HPR / 100) * 365)}%</p>
         </div>
       </div>
     </Container>
