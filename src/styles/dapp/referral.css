@@ -11,6 +11,8 @@ div.progress-bar {
   color: #000000;
   background-color: #585252;
   font-weight: bold;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .referral-card {
