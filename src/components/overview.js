@@ -64,6 +64,11 @@ export default function Overview() {
               methodName: "getInvestmentInfo",
               methodParameters: [],
             },
+            {
+              reference: "getBalance",
+              methodName: "getBalance",
+              methodParameters: [],
+            },
           ],
         },
       ];

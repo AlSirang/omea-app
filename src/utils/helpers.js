@@ -2,11 +2,14 @@ import { ethers } from "ethers";
 
 export const parseOverviewMulticallResponse = (response) => {
   const { returnValues } = response.omea.callsReturnContext[0];
+  const totalValueLocked = ethers.utils.formatEther(
+    response.omea.callsReturnContext[1].returnValues[0]
+  );
 
   return {
     totalInvestors: formateBigNumber(returnValues[0].hex),
-    totalValueLocked: ethers.utils.formatEther(returnValues[1]),
     totalRewardsDistributed: ethers.utils.formatEther(returnValues[2]),
+    totalValueLocked,
   };
 };
 
