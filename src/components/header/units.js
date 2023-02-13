@@ -80,7 +80,7 @@ export const Banner = () => {
 
       <div className="d-flex flex-column align-items-center justify-content-center ">
         <h3 style={{ fontWeight: "bold", textAlign: "center" }}>
-          OMEA IS LAUNCHING ON - Friday, Feb 3, 9:00 AM (CET){" "}
+          OMEA IS LAUNCHING ON - Saturday, Feb 18<sup>th</sup>, 9:00 AM (CET){" "}
         </h3>
 
         <p className="m-0">Join our community to stay updated</p>
